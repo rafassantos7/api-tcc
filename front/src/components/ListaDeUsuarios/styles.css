@@ -1,0 +1,75 @@
+/* src\components\ListaDeUsuarios\styles.css */
+
+/* Garante que o corpo da página ocupe toda a altura */
+html, body, #root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+.video-fundo-lista {
+  position: fixed;
+  top: 0;
+  left: 0;
+  min-width: 100%;
+  min-height: 100%;
+  z-index: -1;
+  object-fit: cover;
+  z-index: -1;
+}
+.pagina-lista {
+  background: red; /* Teste com cor sólida primeiro */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  
+  height: 100vh; /* Garantia que pega 100% da altura da tela */
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  
+  color: white;
+  text-shadow: 1px 1px 2px black;
+}
+
+.card-usuarios {
+  background-color: rgba(255, 255, 255, 0.95);
+  padding: 25px;
+  border-radius: 15px;
+  width: 90%;
+  max-width: 800px;
+  margin-top: 50px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Estilos para a lista */
+.lista-usuarios {
+  list-style-type: none;
+  padding: 0;
+  
+}
+
+.lista-usuarios li {
+  background-color: #ffffff;
+  margin-bottom: 15px;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+}
+
+
+.botao-deletar {
+  margin-top: 5px;
+  background-color: #ff4d4f;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.botao-deletar:hover {
+  background-color: #d9363e;
+}

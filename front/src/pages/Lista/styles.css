@@ -1,0 +1,74 @@
+/* src/pages/Lista/styles.css */
+
+
+/* Estilo principal da página com fundo de imagem */
+.pagina-lista-usuarios {
+    display: flex;      
+    z-index: -1;    
+    justify-content: center;             
+    align-items: center;                  
+    min-height: 100vh;                    /* Garante que ocupe a altura total da tela */
+    padding: 20px;                        /* Espaçamento interno da página */
+    
+    background-color: #f4f4f4;            
+    background-size: cover;               /* Faz a imagem cobrir toda a área */
+    background-position: center;          /* Centraliza a imagem */
+    background-repeat: no-repeat;         /* Evita repetição da imagem */
+    
+}
+
+/* Container central que segura o conteúdo da lista de usuários */
+.pagina-lista-usuarios .container {
+    background-color: white;              /* Fundo branco para destacar o conteúdo */
+    padding: 32px;                        /* Espaçamento interno */
+    box-sizing: border-box;              /* Inclui padding e border no tamanho total */
+    box-shadow: 0 4px 10px rgba(85, 2, 85, 0.103); /* Sombra suave para destaque */
+    width: 90%;                           /* Largura responsiva */
+    max-width: 500px;                     /* Limite máximo de largura */
+    max-height: 80vh;                     /* Altura máxima relativa à tela */
+    overflow-y: auto;                     /* Scroll vertical caso necessário */
+    overflow-x: hidden;
+    text-align: center;                   /* Centraliza o conteúdo de texto */
+    border-radius: 8px;                   /* Arredondamento dos cantos */
+    box-shadow: 15px 15px 15px rgba(79, 2, 94, 0.966);
+}
+
+/* Título dentro do container */
+.pagina-lista-usuarios .container h2 {
+    margin-top: 0;                        /* Remove margem superior */
+    margin-bottom: 20px;                  /* Espaço abaixo do título */
+    font-size: 35px;                      /* Tamanho do título */
+    color: #284ea7;                       /* Cor azul personalizada */
+    
+}
+
+/* Estilo do botão "Voltar" */
+.pagina-lista-usuarios .container .link-voltar {
+    border: none;
+    display: block;                       /* Torna o botão um bloco (ocupa linha toda) */
+    background-size: 400% 400%;
+    background-position: 0% 50%;
+    margin-top: 20px;                     /* Espaçamento superior */
+    font-size: 16px;                      /* Tamanho da fonte */
+    text-align: center;                   /* Centraliza o texto */
+    color: #f4f4f4;                       
+    text-decoration: none;               /* Remove sublinhado */
+    background-color: #a031c2;           /* Cor de fundo azul (adicionado para contraste) */
+    padding: 10px 20px;                   /* Espaçamento interno */
+    border-radius: 6px;                   /* Arredondamento dos cantos */
+    cursor: pointer;                      /* Mostra ponteiro ao passar o mouse */
+    transition: background-color 0.3s ease; /* Animação suave */
+}
+
+/* Efeito hover no botão */
+.pagina-lista-usuarios .container .link-voltar:hover {
+  background: linear-gradient(45deg, #3b0a45, #5a0e5f, #8c1da1, #630563);
+  background-size: 100% 50%;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-position 3s ease, box-shadow 0.3s ease;              /* Garante que o sublinhado continue removido */
+}
