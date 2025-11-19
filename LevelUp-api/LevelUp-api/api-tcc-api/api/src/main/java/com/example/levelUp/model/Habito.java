@@ -13,8 +13,8 @@ public class Habito extends CadastroGeral {
     public Habito() {
     }
 
-    public Habito(Long id, String titulo, String descricao, LocalDate dataInicio, LocalDate dataConclusao,
-            Status status) {
+    public Habito(Long id, String titulo, String descricao, LocalDate dataInicio,
+         LocalDate dataConclusao, Status status) {
         super(titulo, descricao, dataInicio, dataConclusao, status);
     }
 

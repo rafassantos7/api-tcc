@@ -19,7 +19,7 @@ public class TarefaService {
         this.tarefaRepository = tarefaRepository;
     }
 
-    public List<Tarefa> listarTodos() {
+    public List<Tarefa> listarTarefas() {
         return tarefaRepository.findAll();
     }
 
@@ -32,7 +32,7 @@ public class TarefaService {
         return tarefaConcluidas;
     }
 
-    public Tarefa salvar(@Valid Tarefa tarefa) {
+    public Tarefa salvarTarefa(@Valid Tarefa tarefa) {
         return tarefaRepository.save(tarefa);
     }
 
@@ -60,7 +60,7 @@ public class TarefaService {
         return tarefaRepository.save(tarefaAtualizar);
     }
 
-    public void excluir(Long id) {
+    public void excluirTarefa(Long id) {
         Tarefa tarefaExcluir = tarefaRepository.findById(id)
                 .orElseThrow(() -> new RecursoNaoEncontradoException("Tarefa não encontrada"));
 
