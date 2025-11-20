@@ -20,8 +20,8 @@ import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
 @Configuration
 public class JacksonConfig {
 
-  @Bean
-  public Jackson2ObjectMapperBuilderCustomizer jacksonCustomizer() {
+    @Bean
+    Jackson2ObjectMapperBuilderCustomizer jacksonCustomizer() {
     return builder -> {
       DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
       JavaTimeModule module = new JavaTimeModule();
