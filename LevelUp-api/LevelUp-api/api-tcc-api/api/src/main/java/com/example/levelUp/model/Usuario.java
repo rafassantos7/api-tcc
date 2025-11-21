@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Past;
@@ -12,7 +13,7 @@ import jakarta.validation.constraints.Size;
 
 @Entity
 @Table(name = "tab_usuario")
-public class Usuario {
+public class Usuario{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -22,9 +23,10 @@ public class Usuario {
     private String nome;
 
     @NotBlank(message = "Email é obrigatório")
+    @Email(message = "Email inválido.")
     private String email;
 
-    @NotBlank(message = "Telefone é obrigatorio.")
+    @NotBlank(message = "Telefone é obrigatório.")
     private String telefone;
 
     @Size(min = 8, message = "A senha deve ter pelo menos 6 caracteres.")
