@@ -1,46 +1,68 @@
 package com.example.levelUp.dto;
 
-import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.*;
 
 public class UsuarioDTO {
-    
+
     @NotBlank(message = "Nome é obrigatório.")
+    @Size(min = 3, message = "O nome deve ter ao menos 3 caracteres.")
     private String nome;
 
-    @NotBlank(message = "Email é obrigatório")
-    @Email(message = "Deve ser um e-mail válido.")  
+    @NotBlank(message = "Email é obrigatório.")
+    @Email(message = "Email inválido.")
     private String email;
 
-    @NotBlank(message = "Senha é obrigatoria.")
+    @NotBlank(message = "Telefone é obrigatório.")
+    private String telefone;
+
+    @NotBlank(message = "Senha é obrigatória.")
+    @Size(min = 8, message = "A senha deve ter pelo menos 8 caracteres.")
     private String senha;
 
-    public UsuarioDTO() {
-    }
+    @NotNull(message = "Data de nascimento é obrigatória.")
+    private java.time.LocalDate dataNascimento;
 
-    public @NotBlank(message = "O nome é obrigatório.") String getNome() {
+    public UsuarioDTO() {}
+
+    // Getters e Setters
+
+    public String getNome() {
         return nome;
     }
 
-    public void setNome(@NotBlank(message = "O nome é obrigatório.") String nome) {
+    public void setNome(String nome) {
         this.nome = nome;
     }
 
-    public @NotBlank(message = "O email é obrigatório.") @Email(message = "Deve ser um e-mail válido.") String getEmail() {
+    public String getEmail() {
         return email;
     }
 
-    public void setEmail(@NotBlank(message = "O email é obrigatório.") @Email(message = "Deve ser um e-mail válido.") String email) {
+    public void setEmail(String email) {
         this.email = email;
     }
 
-    public @NotBlank(message = "A senha é obrigatória.") String getSenha() {
+    public String getTelefone() {
+        return telefone;
+    }
+
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
+    }
+
+    public String getSenha() {
         return senha;
     }
 
-    public void setSenha(@NotBlank(message = "A senha é obrigatória.") String senha) {
+    public void setSenha(String senha) {
         this.senha = senha;
     }
 
-    
+    public java.time.LocalDate getDataNascimento() {
+        return dataNascimento;
+    }
+
+    public void setDataNascimento(java.time.LocalDate dataNascimento) {
+        this.dataNascimento = dataNascimento;
+    }
 }

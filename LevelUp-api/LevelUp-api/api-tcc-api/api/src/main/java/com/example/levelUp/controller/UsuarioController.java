@@ -22,10 +22,6 @@ public class UsuarioController {
         this.usuarioService = usuarioService;
     }
 
-    @GetMapping
-    public List<Usuario> listarTodos() {
-        return usuarioService.listarTodos();
-    }
 
     @GetMapping("/{id}/metas")
     public ResponseEntity<List<Meta>> listarMetas(@PathVariable Long id) {

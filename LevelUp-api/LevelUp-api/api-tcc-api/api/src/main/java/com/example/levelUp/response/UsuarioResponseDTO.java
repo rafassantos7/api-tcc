@@ -1,4 +1,4 @@
-package com.example.levelUp.dto;
+package com.example.levelUp.response;
 
 public class UsuarioResponseDTO {
     private Long id;
