@@ -12,6 +12,8 @@ public class CriarMetaDTO {
 
     private String descricao;
 
+    private Boolean concluida = false;
+
     @NotNull(message = "Data de início é obrigatória.")
     private LocalDate dataInicio;
 
@@ -24,15 +26,18 @@ public class CriarMetaDTO {
     @NotNull(message = "Id do usuário é obrigatório.")
     private Long usuarioId;
 
-    public CriarMetaDTO() {}
+    public CriarMetaDTO() {
+        
+    }
 
-    public CriarMetaDTO(@NotBlank(message = "Título é obrigatório.") String titulo, String descricao,
+    public CriarMetaDTO(@NotBlank(message = "Título é obrigatório.") String titulo, String descricao, Boolean concluida,
             @NotNull(message = "Data de início é obrigatória.") LocalDate dataInicio,
             @NotNull(message = "Data de conclusão é obrigatória.") LocalDate dataConclusao,
             @NotNull(message = "Status é obrigatório.") Status status,
             @NotNull(message = "Id do usuário é obrigatório.") Long usuarioId) {
         this.titulo = titulo;
         this.descricao = descricao;
+        this.concluida = concluida;
         this.dataInicio = dataInicio;
         this.dataConclusao = dataConclusao;
         this.status = status;
@@ -53,6 +58,14 @@ public class CriarMetaDTO {
 
     public void setDescricao(String descricao) {
         this.descricao = descricao;
+    }
+
+    public Boolean getConcluida() {
+        return concluida;
+    }
+
+    public void setConcluida(Boolean concluida) {
+        this.concluida = concluida;
     }
 
     public LocalDate getDataInicio() {
@@ -87,5 +100,5 @@ public class CriarMetaDTO {
         this.usuarioId = usuarioId;
     }
 
-    
+   
 }

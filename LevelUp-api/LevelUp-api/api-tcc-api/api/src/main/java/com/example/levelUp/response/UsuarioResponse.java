@@ -1,20 +1,14 @@
 package com.example.levelUp.response;
 
-public class UsuarioResponseDTO {
+public class UsuarioResponse {
     private Long id;
     private String nome;
     private String email;
-
+    private String telefone;
     
-    public UsuarioResponseDTO() {
+    public UsuarioResponse() {
     }
 
-
-    public UsuarioResponseDTO(Long id, String nome, String email) {
-        this.id = id;
-        this.nome = nome;
-        this.email = email;
-    }
 
 
     public Long getId() {
@@ -46,6 +40,15 @@ public class UsuarioResponseDTO {
         this.email = email;
     }
 
+
+    public String getTelefone() {
+        return telefone;
+    }
+
+
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
+    }
 
     
 }
