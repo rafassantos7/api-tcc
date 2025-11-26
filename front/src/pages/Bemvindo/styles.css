@@ -218,7 +218,7 @@ body::-webkit-scrollbar {
   }
 }
 
-.botao-primario {
+.botao-comecar {
   position: relative;
   padding: 16px 32px;
   background: linear-gradient(to right, #9333ea, #db2777);
@@ -232,12 +232,12 @@ body::-webkit-scrollbar {
   overflow: hidden;
 }
 
-.botao-primario:hover {
+.botao-comecar:hover {
   transform: scale(1.05);
   box-shadow: 0 25px 50px -12px rgba(168, 85, 247, 0.25);
 }
 
-.botao-primario::before {
+.botao-comecar::before {
   content: '';
   position: absolute;
   top: 0;
@@ -250,16 +250,16 @@ body::-webkit-scrollbar {
   border-radius: 16px;
 }
 
-.botao-primario:hover::before {
+.botao-comecar:hover::before {
   opacity: 1;
 }
 
-.botao-primario span {
+.botao-comecar span {
   position: relative;
   z-index: 1;
 }
 
-.botao-secundario {
+.botao-sabermais {
   padding: 16px 32px;
   border: 1px solid rgba(255, 255, 255, 0.2);
   color: white;
@@ -272,7 +272,7 @@ body::-webkit-scrollbar {
   font-size: 16px;
 }
 
-.botao-secundario:hover {
+.botao-sabermais:hover {
   background: rgba(255, 255, 255, 0.05);
 }
 

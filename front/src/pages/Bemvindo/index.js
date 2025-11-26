@@ -66,13 +66,11 @@ function PaginaBemvindo() {
           </div>
 
           <div className="botoes-cta">
-            <button onClick={() => navigate('/cadastro')} className="botao-primario">
+            <button onClick={() => navigate('/cadastro')} className="botao-comecar">
               <span>Começar agora</span>
             </button>
-            <button className="botao-secundario">Saber mais</button>
-            <button onClick={() => navigate('/tarefas')} className="botao-tarefas-livre">
-              Acessar Gerenciador de Tarefas
-            </button>
+            <button className="botao-sabermais">Saber mais</button>
+           
           </div>
 
           <div className="features">
