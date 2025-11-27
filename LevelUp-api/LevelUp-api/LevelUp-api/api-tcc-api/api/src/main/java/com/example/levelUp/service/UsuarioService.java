@@ -1,12 +1,14 @@
 package com.example.levelUp.service;
 
+
+import com.example.levelUp.dto.UsuarioDTO;
 import com.example.levelUp.exception.EmailJaCadastradoException;
 import com.example.levelUp.model.Habito;
 import com.example.levelUp.model.Meta;
 import com.example.levelUp.model.Usuario;
 import com.example.levelUp.repository.UsuarioRepository;
 
-import jakarta.validation.Valid;
+import main.java.com.example.levelUp.mapper.UsuarioMapper;
 
 import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
@@ -20,15 +22,14 @@ import com.example.levelUp.repository.MetaRepository;
 public class UsuarioService {
     private UsuarioRepository usuarioRepository;
     private MetaRepository metasRepository;
+    private UsuarioMapper usuarioMapper;
 
     public UsuarioService(UsuarioRepository usuarioRepository, MetaRepository metasRepository) {
         this.usuarioRepository = usuarioRepository;
         this.metasRepository = metasRepository;
     }
 
-    public List<Usuario> listarTodos() {
-        return usuarioRepository.findAll();
-    }
+   
 
     public List<Meta> listarMetasdoUsuario(Long usuarioId) {
         if (!usuarioRepository.existsById(usuarioId)) {
@@ -37,25 +38,33 @@ public class UsuarioService {
         return metasRepository.findByUsuarioId(usuarioId);
     }
 
-    public Usuario salvar(@Valid Usuario usuario) {
-        if (usuarioRepository.findByEmail(usuario.getEmail()).isPresent()) {
-            throw new EmailJaCadastradoException("Usuário já cadastrado.");
+    public UsuarioResponseDTO salvar(UsuarioDTO dto) {
+
+        if (usuarioRepository.findByEmail(dto.getEmail()).isPresent()) {
+            throw new EmailJaCadastradoException("Email já cadastrado.");
         }
 
-        return usuarioRepository.save(usuario);
+        Usuario usuario = UsuarioMapper.toEntity(dto);
+        Usuario salvo = usuarioRepository.save(usuario);
+
+        return UsuarioMapper.toResponse(salvo);
     }
 
-    public Usuario atualizar(@Valid Usuario usuario) {
-        Usuario usuarioAtualizar = usuarioRepository.findById(usuario.getId())
-                .orElseThrow(() -> new IllegalArgumentException("Usuario não encontrado."));
+   public UsuarioResponseDTO atualizar(Long id, UsuarioRequestDTO dto) {
+    Usuario usuarioBanco = usuarioRepository.findById(id)
+            .orElseThrow(() -> new IllegalArgumentException("Usuário não encontrado."));
 
-        usuarioAtualizar.setNome(usuario.getNome());
-        usuarioAtualizar.setEmail(usuario.getEmail());
-        usuarioAtualizar.setSenha(usuario.getSenha());
-        usuarioAtualizar.setTelefone(usuario.getTelefone());
+    // Atualiza apenas os campos permitidos via DTO
+    usuarioBanco.setNome(dto.getNome());
+    usuarioBanco.setEmail(dto.getEmail());
+    usuarioBanco.setSenha(dto.getSenha());
+    usuarioBanco.setTelefone(dto.getTelefone());
 
-        return usuarioRepository.save(usuarioAtualizar);
-    }
+    Usuario salvo = usuarioRepository.save(usuarioBanco);
+
+    return UsuarioMapper.toResponseDTO(salvo);
+}
+
 
     public void excluir(Long id) {
         Usuario usuarioExcluir = usuarioRepository.findById(id)
@@ -65,7 +74,7 @@ public class UsuarioService {
     }
 
     public Usuario adicionarMeta(Long usuarioId, List<Meta> metas) {
-        Usuario usuario = usuarioRepository.findById(usuarioId)
+        UsuaArio usuario = usuarioRepository.findById(usuarioId)
                 .orElseThrow(() -> new IllegalArgumentException("Usuário não encontrado."));
         usuario.setMetas(metas);
         return usuarioRepository.save(usuario);

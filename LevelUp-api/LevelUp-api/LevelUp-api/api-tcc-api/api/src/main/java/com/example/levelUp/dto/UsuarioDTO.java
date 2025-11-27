@@ -24,7 +24,7 @@ public class UsuarioDTO {
 
     public UsuarioDTO() {}
 
-    // Getters e Setters
+   
 
     public String getNome() {
         return nome;

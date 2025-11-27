@@ -23,31 +23,49 @@ public class UsuarioController {
     }
 
 
-
-
     @GetMapping("/{id}/metas")
     public ResponseEntity<List<Meta>> listarMetas(@PathVariable Long id) {
         List<Meta> metas = usuarioService.listarMetasdoUsuario(id);
         return ResponseEntity.ok(metas);
     }
 
-    @PostMapping
-    public ResponseEntity<Map<String, Object>> salvar(@Valid @RequestBody Usuario usuario) {
-        usuarioService.salvar(usuario);
+    // @PostMapping
+    // public ResponseEntity<Map<String, Object>> salvar(@Valid @RequestBody Usuario usuario) {
+    //     usuarioService.salvar(usuario);
+    //     return ResponseEntity
+    //             .status(HttpStatus.CREATED)
+    //             .body(Map.of("mensagem", "Usuário cadastrado com sucesso."));
+    // }
+    @PostMapping("/salvar")
+    public ResponseEntity<UsuarioResponseDTO> salvar(@Valid @RequestBody UsuarioRequestDTO dto) {
+        Usuario usuario = usuarioMapper.toEntity(dto);
+        Usuario salvo = usuarioService.salvar(usuario);
+
         return ResponseEntity
                 .status(HttpStatus.CREATED)
-                .body(Map.of("mensagem", "Usuário cadastrado com sucesso."));
+                .body(usuarioMapper.toResponse(salvo));
     }
 
-    @PutMapping
-    public ResponseEntity<Map<String, Object>> atualizar(@Valid @RequestBody Usuario usuario) {
-        usuarioService.atualizar(usuario);
-        return ResponseEntity
-                .status(HttpStatus.OK)
-                .body(Map.of("mensagem", "Usuário atualizado com sucesso"));
-    }
+    // @PutMapping
+    // public ResponseEntity<Map<String, Object>> atualizar(@Valid @RequestBody Usuario usuario) {
+    //     usuarioService.atualizar(usuario);
+    //     return ResponseEntity
+    //             .status(HttpStatus.OK)
+    //             .body(Map.of("mensagem", "Usuário atualizado com sucesso"));
+    // }
+    @PutMapping("/{id}/atualizar")
+    public ResponseEntity<UsuarioResponse> atualizar(
+        @PathVariable Long id,
+        @Valid @RequestBody UsuarioDTO dto) {
 
-    @DeleteMapping("/{id}")
+    UsuarioResponse atualizado = usuarioService.atualizar(id, dto);
+
+    return ResponseEntity.ok(atualizado);
+}
+
+
+
+    @DeleteMapping("/{id}/excluir")
     public ResponseEntity<Map<String, Object>> excluir(@PathVariable Long id) {
         usuarioService.excluir(id);
         return ResponseEntity
