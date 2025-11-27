@@ -6,6 +6,17 @@ public class UsuarioResponse {
     private String email;
     private String telefone;
     
+    
+
+    public UsuarioResponse(Long id, String nome, String email, String telefone) {
+        this.id = id;
+        this.nome = nome;
+        this.email = email;
+        this.telefone = telefone;
+    }
+
+
+
     public UsuarioResponse() {
     }
 

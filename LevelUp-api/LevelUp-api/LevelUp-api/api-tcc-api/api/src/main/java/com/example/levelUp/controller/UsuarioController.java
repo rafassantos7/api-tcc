@@ -23,11 +23,6 @@ public class UsuarioController {
     }
 
 
-   @GetMapping
-    public List<Usuario> listarTodos() {
-        return usuarioService.listarTodos();
-    }
-    
 
 
     @GetMapping("/{id}/metas")
