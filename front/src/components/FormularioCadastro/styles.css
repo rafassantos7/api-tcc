@@ -180,24 +180,7 @@ html, body, #root {
     transform: scale(1.05);
     box-shadow: 0 25px 50px -12px rgba(168, 85, 247, 0.25);
   }
-  .area-link-usuarios {
-    margin-top: 24px;
-    text-align: center;
-  }
-  .link-usuarios {
-    color: #fff;
-    background: transparent;
-    border: none;
-    font-size: 14px;
-    cursor: pointer;
-    text-decoration: underline;
-    text-underline-offset: 4px;
-    transition: all 0.2s ease;
-  }
-  .link-usuarios:hover {
-    color: #a855f7;
-    text-underline-offset: 2px;
-  }
+  
   .informacoes-laterais {
     display: none;
     flex-direction: column;
@@ -449,7 +432,7 @@ html, body, #root {
   margin-top: 24px;
   text-align: center;
 }
-
+/* 
 .link-usuarios {
   color: #fff;
   background: transparent;
@@ -464,7 +447,7 @@ html, body, #root {
 .link-usuarios:hover {
   color: #a855f7;
   text-underline-offset: 2px;
-}
+} */
 
 /* Features laterais */
 .features-lateral {

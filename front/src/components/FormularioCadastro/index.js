@@ -159,15 +159,7 @@ function FormularioCadastro() {
                                     <div className="absolute inset-0 bg-gradient-to-r from-purple-700 to-pink-700 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                                 </button>
                             </div>
-                            {/* Link para usuários */}
-                            <div className="area-link-usuarios">
-                                <button 
-                                    onClick={() => navigate('/usuarios')} 
-                                    className="link-usuarios"
-                                >
-                                    Ver usuários cadastrados
-                                </button>
-                            </div>
+                           
                         </div>
                     </div>
                     {/* Features laterais (dentro do container, como no início) */}

@@ -38,7 +38,7 @@ function PaginaBemvindo() {
 
       {/* Navigation */}
       <nav className="navbar">
-        <div className="logo">LevelUp</div>
+        <div className="logo">Level UP</div>
         <div className="versao">Versão 1.0</div>
         <div className="navbar-actions">
           <button onClick={() => navigate('/login')} className="botao-login">Login</button>
