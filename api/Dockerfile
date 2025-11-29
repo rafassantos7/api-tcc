@@ -1,29 +1,28 @@
-# --- ESTÁGIO 1: BUILD (Compilar o projeto) ---
-# Usa uma imagem com Maven e Java 17 para gerar o .jar
-FROM maven:3.9.6-eclipse-temurin-17 AS build
+# --- ESTÁGIO 1: BUILD (Compilar o projeto com Java 21) ---
+# Usa imagem Maven com Java 21 oficial
+FROM maven:3.9.6-eclipse-temurin-21 AS build
 WORKDIR /app
 
-# Copia apenas o pom.xml primeiro para cachear as dependências (Otimização)
+# Copia o pom.xml e baixa dependências (Cache)
 COPY pom.xml .
-# Baixa as dependências (sem copiar o código fonte ainda)
 RUN mvn dependency:go-offline
 
-# Copia o código fonte do projeto
+# Copia o código fonte
 COPY src ./src
 
-# Compila o projeto e gera o arquivo .jar (pulando testes para ser mais rápido no deploy)
+# Compila o projeto
 RUN mvn clean package -DskipTests
 
-# --- ESTÁGIO 2: RUN (Rodar a aplicação) ---
-# Usa uma imagem leve (Alpine) apenas com o JRE para rodar o app
-FROM eclipse-temurin:17-jdk-alpine
+# --- ESTÁGIO 2: RUN (Rodar com Java 21 leve) ---
+# Usa imagem Alpine com Java 21 (Muito mais leve e rápida)
+FROM eclipse-temurin:21-jdk-alpine
 WORKDIR /app
 
-# Copia o .jar gerado no estágio anterior
+# Pega o .jar gerado no estágio anterior
 COPY --from=build /app/target/*.jar app.jar
 
-# Expõe a porta 8080 (Padrão do Spring Boot)
+# Expõe a porta
 EXPOSE 8080
 
-# Comando para iniciar a aplicação
+# Inicia
 ENTRYPOINT ["java", "-jar", "app.jar"]
