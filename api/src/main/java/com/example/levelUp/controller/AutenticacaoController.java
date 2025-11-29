@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.context.annotation.Lazy;
 
 import com.example.levelUp.dto.DadosAutenticacao;
 import com.example.levelUp.dto.DadosTokenJWT;
@@ -23,10 +24,10 @@ public class AutenticacaoController {
   private final TokenService tokenService;
 
   // Injeção via construtor (Melhor prática)
-  public AutenticacaoController(AuthenticationManager manager, TokenService tokenService) {
-    this.manager = manager;
-    this.tokenService = tokenService;
-  }
+  public AutenticacaoController(@Lazy AuthenticationManager manager, TokenService tokenService) {
+        this.manager = manager;
+        this.tokenService = tokenService;
+    }
 
   @PostMapping
   public ResponseEntity<DadosTokenJWT> efetuarLogin(@RequestBody @Valid DadosAutenticacao dados) {
@@ -41,4 +42,5 @@ public class AutenticacaoController {
 
     return ResponseEntity.ok(new DadosTokenJWT(tokenJWT));
   }
+
 }
