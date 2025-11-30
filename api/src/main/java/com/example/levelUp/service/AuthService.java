@@ -3,6 +3,7 @@ package com.example.levelUp.service;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -40,6 +41,7 @@ public class AuthService {
 
     Authentication authentication = authenticationManager.authenticate(authenticationToken);
 
+    // CORREÇÃO: Buscar usuário do banco em vez de fazer cast direto
     UserDetails userDetails = (UserDetails) authentication.getPrincipal();
     Usuario usuario = usuarioRepository.findByEmail(userDetails.getUsername())
         .orElseThrow(() -> new RuntimeException("Usuário não encontrado após autenticação"));
@@ -47,7 +49,7 @@ public class AuthService {
     String token = tokenService.generateToken(usuario);
 
     return new DadosTokenJWT(token);
-}
+  }
 
   public UsuarioResponse cadastrar(UsuarioDTO usuarioDTO) {
     if (usuarioRepository.existsByEmail(usuarioDTO.email())) {
@@ -75,5 +77,4 @@ public class AuthService {
   public boolean verificarEmailExistente(String email) {
     return usuarioRepository.existsByEmail(email);
   }
-
 }
