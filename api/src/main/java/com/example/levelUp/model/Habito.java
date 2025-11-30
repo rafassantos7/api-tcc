@@ -1,7 +1,6 @@
 package com.example.levelUp.model;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.Future;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
@@ -27,7 +26,7 @@ public class Habito extends CadastroGeral {
 
     public Habito(@NotBlank(message = "Titulo é obrigatório.") String titulo, String descricao,
             @NotNull(message = "Data de criação é obrigatória.") LocalDate dataInicio,
-            @Future(message = "Se houver data de conclusão, ela deve ser no futuro.") LocalDate dataConclusao,
+            LocalDate dataConclusao,
             Status status, @NotNull(message = "A frequencia é obrigatória.") FrequenciaHabito frequencia) {
         super(titulo, descricao, dataInicio, dataConclusao, status);
         this.frequencia = frequencia;
@@ -44,3 +43,4 @@ public class Habito extends CadastroGeral {
     }
 
 }
+
