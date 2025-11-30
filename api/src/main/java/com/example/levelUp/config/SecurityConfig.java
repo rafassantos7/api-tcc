@@ -40,7 +40,7 @@ public class SecurityConfig {
         .authorizeHttpRequests(req -> {
           // ROTAS PÚBLICAS
           req.requestMatchers(HttpMethod.POST, "/auth/login").permitAll();
-          req.requestMatchers(HttpMethod.POST, "/auth/registrar").permitAll();
+          req.requestMatchers(HttpMethod.POST, "/auth/cadastro").permitAll();
           req.requestMatchers(HttpMethod.GET, "/health").permitAll();
 
           // ROTAS PRIVADAS
@@ -78,4 +78,5 @@ public class SecurityConfig {
   public PasswordEncoder passwordEncoder() {
     return new BCryptPasswordEncoder();
   }
+
 }
