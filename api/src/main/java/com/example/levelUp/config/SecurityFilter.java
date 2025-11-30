@@ -29,42 +29,39 @@ public class SecurityFilter extends OncePerRequestFilter {
   }
 
   @Override
-  protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
-      throws ServletException, IOException {
+protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
+        throws ServletException, IOException {
 
     try {
-      var token = recuperarToken(request);
+        var token = recuperarToken(request);
 
-      if (token != null) {
-        var login = tokenService.getSubject(token);
+        if (token != null) {
+            var login = tokenService.getSubject(token);
 
-        if (login != null && !login.isEmpty()) {
-          // Busca o usuário pelo email (já é UserDetails)
-          UserDetails usuario = usuarioRepository.findByEmail(login);
+            if (login != null && !login.isEmpty()) {
+                // ✅ CORREÇÃO: Use Optional corretamente
+                Optional<Usuario> usuarioOpt = usuarioRepository.findByEmail(login);
+                
+                if (usuarioOpt.isPresent()) {
+                    UserDetails usuario = usuarioOpt.get(); // Agora funciona!
+                    
+                    var authentication = new UsernamePasswordAuthenticationToken(
+                        usuario,
+                        null,
+                        usuario.getAuthorities());
+                    SecurityContextHolder.getContext().setAuthentication(authentication);
 
-          if (usuario != null) {
-            // Cria a autenticação e configura no contexto de segurança
-            var authentication = new UsernamePasswordAuthenticationToken(
-                usuario,
-                null,
-                usuario.getAuthorities());
-            SecurityContextHolder.getContext().setAuthentication(authentication);
-
-            // Log para debug (opcional)
-            logger.debug("Usuário autenticado: " + login);
-          }
+                    logger.debug("Usuário autenticado: " + login);
+                }
+            }
         }
-      }
     } catch (Exception e) {
-      // Log do erro mas não quebra a requisição
-      logger.error("Erro no processamento do token JWT", e);
-      // Limpa o contexto em caso de erro
-      SecurityContextHolder.clearContext();
+        logger.error("Erro no processamento do token JWT", e);
+        SecurityContextHolder.clearContext();
     }
 
-    // Continua o fluxo da requisição
     filterChain.doFilter(request, response);
-  }
+}
 
   private String recuperarToken(HttpServletRequest request) {
     var authHeader = request.getHeader("Authorization");
@@ -90,4 +87,5 @@ public class SecurityFilter extends OncePerRequestFilter {
     return path.startsWith("/auth/login") ||
         path.startsWith("/auth/cadastro");
   }
+
 }
