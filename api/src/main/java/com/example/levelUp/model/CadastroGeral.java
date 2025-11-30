@@ -6,7 +6,6 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.MappedSuperclass;
-import jakarta.validation.constraints.Future;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
@@ -16,8 +15,10 @@ import com.example.levelUp.model.enums.Status;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.GeneratedValue;
+import com.example.levelUp.validation.DataConclusaoDepoisDeInicio;
 import jakarta.persistence.GenerationType;
 
+@DataConclusaoDepoisDeInicio
 @MappedSuperclass
 public abstract class CadastroGeral {
     @Id
@@ -32,7 +33,6 @@ public abstract class CadastroGeral {
     @NotNull(message = "Data de criação é obrigatória.")
     protected LocalDate dataInicio;
 
-    @Future(message = "Se houver data de conclusão, ela deve ser no futuro.")
     protected LocalDate dataConclusao;
 
     @Enumerated(EnumType.STRING)
@@ -47,12 +47,11 @@ public abstract class CadastroGeral {
     }
 
     public CadastroGeral(@NotBlank(message = "Titulo é obrigatório.") String titulo, String descricao,
-            @NotNull(message = "Data de criação é obrigatória.") LocalDate dataInicio,
-            @Future(message = "Se houver data de conclusão, ela deve ser no futuro.") LocalDate dataConclusao,
+            @NotNull(message = "Data de criação é obrigatória.") LocalDate dataInicio, LocalDate dataConclusao,
             Status status) {
         this.titulo = titulo;
         this.descricao = descricao;
-        this.dataInicio = dataInicio;
+        this.dataInicio = dataInicio == null ? LocalDate.now() : dataInicio;
         this.dataConclusao = dataConclusao;
         this.status = status;
     }
@@ -114,3 +113,4 @@ public abstract class CadastroGeral {
     }
 
 }
+
