@@ -40,10 +40,14 @@ public class AuthService {
 
     Authentication authentication = authenticationManager.authenticate(authenticationToken);
 
-    String token = tokenService.generateToken((Usuario) authentication.getPrincipal());
+    UserDetails userDetails = (UserDetails) authentication.getPrincipal();
+    Usuario usuario = usuarioRepository.findByEmail(userDetails.getUsername())
+        .orElseThrow(() -> new RuntimeException("Usuário não encontrado após autenticação"));
+
+    String token = tokenService.generateToken(usuario);
 
     return new DadosTokenJWT(token);
-  }
+}
 
   public UsuarioResponse cadastrar(UsuarioDTO usuarioDTO) {
     if (usuarioRepository.existsByEmail(usuarioDTO.email())) {
@@ -71,4 +75,5 @@ public class AuthService {
   public boolean verificarEmailExistente(String email) {
     return usuarioRepository.existsByEmail(email);
   }
+
 }
