@@ -40,10 +40,9 @@ public class UsuarioService {
         return getUsuarioLogado();
     }
 
-    public UsuarioResponse salvar(UsuarioDTO dto) {
-        if (usuarioRepository.findByEmail(dto.email()) != null) {
-            throw new EmailJaCadastradoException("Email já cadastrado.");
-        }
+     if (usuarioRepository.existsByEmail(dto.email())) {
+        throw new EmailJaCadastradoException("Email já cadastrado.");
+    }
 
         Usuario usuario = new Usuario(
                 dto.email(),
