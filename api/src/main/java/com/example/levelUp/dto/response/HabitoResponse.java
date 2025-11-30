@@ -7,7 +7,6 @@ import com.example.levelUp.model.enums.FrequenciaHabito;
 import com.example.levelUp.model.enums.Status;
 
 public record HabitoResponse(
-    Long id,
     String titulo,
     String descricao,
     LocalDate dataInicio,
@@ -16,7 +15,6 @@ public record HabitoResponse(
     FrequenciaHabito frequencia) {
   public HabitoResponse(Habito habito) {
     this(
-        habito.getId(),
         habito.getTitulo(),
         habito.getDescricao(),
         habito.getDataInicio(),
@@ -24,4 +22,5 @@ public record HabitoResponse(
         habito.getStatus(),
         habito.getFrequencia());
   }
+
 }
