@@ -5,7 +5,7 @@ import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import com.example.levelUp.dto.request.UsuarioDTO;
+import com.example.levelUp.dto.request.UsuarioUpdateDTO;
 import com.example.levelUp.dto.response.UsuarioResponse;
 import com.example.levelUp.service.UsuarioService;
 
@@ -26,8 +26,8 @@ public class UsuarioController {
     }
 
     @PutMapping("/me")
-    public ResponseEntity<UsuarioResponse> atualizarMeuPerfil(@Valid @RequestBody UsuarioDTO usuarioDTO) {
-        UsuarioResponse response = usuarioService.atualizarMeuPerfil(usuarioDTO);
+    public ResponseEntity<UsuarioResponse> atualizarMeuPerfil(@Valid @RequestBody UsuarioUpdateDTO usuarioUpdateDTO) {
+        UsuarioResponse response = usuarioService.atualizarMeuPerfil(usuarioUpdateDTO);
         return ResponseEntity.ok(response);
     }
 
@@ -36,4 +36,5 @@ public class UsuarioController {
         usuarioService.excluirMeuPerfil();
         return ResponseEntity.noContent().build();
     }
+
 }
