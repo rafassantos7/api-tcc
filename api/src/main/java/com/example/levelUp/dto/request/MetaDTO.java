@@ -13,7 +13,8 @@ public record MetaDTO(
 
     @NotNull(message = "Data de início é obrigatória") LocalDate dataInicio,
 
-    @Future(message = "A data alvo deve ser no futuro") LocalDate dataConclusao,
+    LocalDate dataConclusao,
 
     Status status) {
+
 }
