@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
 
 import com.example.levelUp.dto.request.UsuarioDTO;
+import com.example.levelUp.dto.request.UsuarioUpdateDTO;
 import com.example.levelUp.dto.response.UsuarioResponse;
 import com.example.levelUp.exception.EmailJaCadastradoException;
 import com.example.levelUp.exception.RecursoNaoEncontradoException;
@@ -40,7 +41,6 @@ public class UsuarioService {
         return getUsuarioLogado();
     }
 
-    // CORREÇÃO: Método salvar completo
     public UsuarioResponse salvar(UsuarioDTO dto) {
         if (usuarioRepository.existsByEmail(dto.email())) {
             throw new EmailJaCadastradoException("Email já cadastrado.");
@@ -71,7 +71,7 @@ public class UsuarioService {
         return new UsuarioResponse(usuarioBanco);
     }
 
-    public UsuarioResponse atualizarMeuPerfil(UsuarioDTO dto) {
+    public UsuarioResponse atualizarMeuPerfil(UsuarioUpdateDTO dto) {
         Usuario usuarioDoToken = getUsuarioLogado();
 
         Usuario usuarioBanco = usuarioRepository.findById(usuarioDoToken.getId())
@@ -81,6 +81,10 @@ public class UsuarioService {
         Optional.ofNullable(dto.email()).ifPresent(usuarioBanco::setEmail);
         Optional.ofNullable(dto.telefone()).ifPresent(usuarioBanco::setTelefone);
         Optional.ofNullable(dto.dataNascimento()).ifPresent(usuarioBanco::setDataNascimento);
+
+        if (dto.senha() != null && !dto.senha().trim().isEmpty()) {
+            usuarioBanco.setSenha(passwordEncoder.encode(dto.senha()));
+        }
 
         Usuario salvo = usuarioRepository.save(usuarioBanco);
         return new UsuarioResponse(salvo);
