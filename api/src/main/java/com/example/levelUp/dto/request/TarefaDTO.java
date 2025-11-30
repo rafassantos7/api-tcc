@@ -19,7 +19,6 @@ public record TarefaDTO(
     @NotNull(message = "Data de início é obrigatória") 
     LocalDate dataInicio,
 
-    @Future(message = "A data alvo deve ser no futuro") 
     LocalDate dataConclusao,
 
     Status status,
@@ -36,4 +35,5 @@ public record TarefaDTO(
             status != null ? status : Status.PENDENTE
         );
     }
+
 }
