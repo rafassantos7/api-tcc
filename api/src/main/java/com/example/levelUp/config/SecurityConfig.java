@@ -41,7 +41,6 @@ public class SecurityConfig {
           // ROTAS PÚBLICAS
           req.requestMatchers(HttpMethod.POST, "/auth/login").permitAll();
           req.requestMatchers(HttpMethod.POST, "/auth/cadastro").permitAll();
-          req.requestMatchers(HttpMethod.GET, "/health").permitAll();
 
           // ROTAS PRIVADAS
           req.anyRequest().authenticated();
@@ -80,3 +79,4 @@ public class SecurityConfig {
   }
 
 }
+
