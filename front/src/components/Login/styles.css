@@ -1,0 +1,98 @@
+/* ===== Reset e garantia de 100% de altura para React/Next/CRA ===== */
+html, body, #root, #__next {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+}
+
+/* Caso o seu app use outro id raiz, adicione aqui também:
+   ex: #app-root { height: 100%; } 
+*/
+
+/* ===== Página inteira: garante centralização mesmo se houver outros wrappers ===== */
+.page-login { 
+  min-height: 100vh;           /* ocupa toda a viewport */
+  display: flex;              
+  align-items: center;         /* centra vertical */
+  justify-content: center;     /* centra horizontal */
+  background: linear-gradient(135deg, #0f0f17 0%, #3d0066 50%, #0f0f17 100%);
+  padding: 24px;
+}
+
+/* ===== Caixa do login ===== */
+.login-box {
+  width: 100%;
+  max-width: 380px;
+  background: rgba(220, 3, 228, 0.616);
+  -webkit-backdrop-filter: blur(18px);
+  backdrop-filter: blur(18px);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  padding: 32px;
+  border-radius: 18px;
+  box-shadow: 0px 25px 40px rgba(124, 4, 180, 0.4);
+  text-align: center;
+}
+
+/* Título */
+.login-box h3 {
+  color: rgb(68, 0, 68);
+  font-size: 26px;
+  margin-bottom: 24px;
+  font-weight: 600;
+}
+
+/* Inputs */
+.login-box input {
+  width: 100%;
+  padding: 14px;
+  margin: 12px 0;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.9);
+  border: 2px solid transparent;
+  font-size: 16px;
+  color: #1a1a1a;
+  transition: all 0.3s ease;
+}
+
+.login-box input::placeholder { color: #292727; }
+
+.login-box input:focus {
+  outline: none;
+  border-color: #a855f7;
+  box-shadow: 0 0 10px rgba(54, 1, 104, 0.45);
+}
+
+/* Botão */
+.login-box button {
+  width: 100%;
+  padding: 14px;
+  border-radius: 12px;
+  margin-top: 12px;
+  border: none;
+  font-size: 17px;
+  font-weight: bold;
+  background: linear-gradient(45deg, #7b1fa2, #b026ff);
+  color: white;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.login-box button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 14px rgba(55, 1, 87, 0.6);
+}
+
+/* Mensagem */
+.mensagem {
+  margin-top: 10px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+/* ===== Mobile tweaks ===== */
+@media (max-width: 420px) {
+  .login-box { padding: 20px; border-radius: 14px; }
+  .login-box h3 { font-size: 22px; }
+}

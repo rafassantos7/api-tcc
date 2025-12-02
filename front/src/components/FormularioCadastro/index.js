@@ -162,38 +162,7 @@ function FormularioCadastro() {
                            
                         </div>
                     </div>
-                    {/* Features laterais (dentro do container, como no início) */}
-                    <div className="informacoes-laterais">
-                        <div className="espacamento-infos">
-                            <div className="info-item">
-                                <div className="info-icone">
-                                    <span className="icone-info">✨</span>
-                                </div>
-                                <div>
-                                    <h4 className="titulo-info">Interface intuitiva</h4>
-                                    <p className="descricao-info">Design pensado para facilitar sua rotina diária</p>
-                                </div>
-                            </div>
-                            <div className="info-item">
-                                <div className="info-icone azul-roxo">
-                                    <span className="icone-info">🔒</span>
-                                </div>
-                                <div>
-                                    <h4 className="titulo-info">Dados seguros</h4>
-                                    <p className="descricao-info">Suas informações protegidas com criptografia avançada</p>
-                                </div>
-                            </div>
-                            <div className="info-item">
-                                <div className="info-icone verde-azul">
-                                    <span className="icone-info">📱</span>
-                                </div>
-                                <div>
-                                    <h4 className="titulo-info">Acesso em qualquer lugar</h4>
-                                    <p className="descricao-info">Sincronização automática em todos os seus dispositivos</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    
                 </div>
             </div>
 
