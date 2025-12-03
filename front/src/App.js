@@ -3,8 +3,9 @@ import PaginaCadastro from './pages/Cadastro';
 import PaginaListaUsuarios from './pages/Lista';
 import PaginaBemVindo from './pages/Bemvindo';
 import PaginaTarefa from './pages/Tarefas';
-import PaginaLogin from './pages/login';
+import PaginaLogin from './pages/Login';
 import AddTask from './pages/AdicionaTarefas';
+import Metas from './pages/ListaMetas';
 
 import './App.css'; // Para estilos globais, se necessário
 import TaskForm from './pages/Tarefas/addtask';
@@ -15,6 +16,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Navigate to="/bemvindo" replace />} />
         <Route path="/bemvindo" element={<PaginaBemVindo />} />
+        <Route path="/metas" element={<Metas />} />
         <Route path="/cadastro" element={<PaginaCadastro />} />
         <Route path="/tarefas" element={<PaginaTarefa />} />
         <Route path="/add-task" element={<TaskForm />} />
