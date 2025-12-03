@@ -6,7 +6,7 @@ import com.example.levelUp.model.enums.Status;
 import java.time.LocalDate;
 
 public record MetaResponse(
-        Long id;
+        Long id,
         String titulo,
         String descricao,
         LocalDate dataInicio,
@@ -14,7 +14,7 @@ public record MetaResponse(
         Status status) {
     public MetaResponse(Meta meta) {
         this(   
-                meta.getId();
+                meta.getId(),
                 meta.getTitulo(),
                 meta.getDescricao(),
                 meta.getDataInicio(),
@@ -23,3 +23,4 @@ public record MetaResponse(
     }
 
 }
+
