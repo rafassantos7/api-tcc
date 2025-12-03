@@ -10,7 +10,6 @@ function FormularioCadastro() {
     const [email, setEmail] = useState('');
     const [telefone, setTelefone] = useState('');
     const [senha, setSenha] = useState('');
-    const [mostrarSenha, setMostrarSenha] = useState(false);
     const [dataNascimento, setDataNascimento] = useState('');
     const [isLoading, setIsLoading] = useState(false);
     const [mensagem, setMensagem] = useState({ texto: '', tipo: '' });
@@ -109,7 +108,7 @@ function FormularioCadastro() {
             console.log('Dados enviados para API:', dadosCadastro);
             
             // Chamada à API usando api.post
-            const response = await api.post('/auth/cadastro', dadosCadastro);
+            await api.post('/auth/cadastro', dadosCadastro);
 
             // Sucesso no cadastro
             setMensagem({ 
@@ -259,7 +258,6 @@ function FormularioCadastro() {
                                     <label className="rotulo-campo">Senha</label>
                                     <div className="input-senha-wrapper">
                                         <input 
-                                            type={mostrarSenha ? "text" : "password"}
                                             placeholder="Crie uma senha segura (mínimo 6 caracteres)" 
                                             value={senha} 
                                             onChange={(e) => setSenha(e.target.value)} 
@@ -267,14 +265,6 @@ function FormularioCadastro() {
                                             className="input-cadastro"
                                             disabled={isLoading}
                                         />
-                                        <button 
-                                            type="button" 
-                                            className="botao-mostrar-senha"
-                                            onClick={() => setMostrarSenha(!mostrarSenha)}
-                                            disabled={isLoading}
-                                        >
-                                            {mostrarSenha ? '🙈' : '👁️'}
-                                        </button>
                                     </div>
                                 </div>
                                 <div className="campo-formulario">

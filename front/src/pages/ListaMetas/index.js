@@ -4,7 +4,7 @@ import Metas from "../../components/Metas";
 function ListaMetas() {
     return (
         <div className='pagina-metas'>
-            <Metas>
+            <Metas/>
         </div>
     )
 }

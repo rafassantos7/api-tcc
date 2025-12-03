@@ -2,7 +2,7 @@ import axios from 'axios';
 
 const api = axios.create({
   baseURL: 'https://deploy-levelup.onrender.com',
-  timeout: 5000, // 5 segundos de timeout
+  timeout: 10000, // 5 segundos de timeout
   headers: {
     'Content-Type': 'application/json',
   },
@@ -11,7 +11,7 @@ const api = axios.create({
 // Interceptor de Requisição: Adiciona o token ao cabeçalho Authorization
 api.interceptors.request.use(
   (config) => {
-    const token = localStorage.getItem('levelup_token');
+    const token = localStorage.getItem('token');
     if (token) {
       config.headers.Authorization = `Bearer ${token}`;
     }
@@ -28,7 +28,7 @@ api.interceptors.response.use(
   (error) => {
     if (error.response && (error.response.status === 401 || error.response.status === 403)) {
       // Se o token for inválido ou expirado, limpa o storage e redireciona
-      localStorage.removeItem('levelup_token');
+      localStorage.removeItem('token');
       // Redirecionamento forçado para login (usando window.location pois estamos fora do componente React)
       if (!window.location.pathname.includes('/auth/login')) {
          window.location.href = '/auth/login';
