@@ -37,13 +37,39 @@ function PaginaBemvindo() {
       <div className="grid-pattern"></div>
 
       {/* Navigation */}
-      <nav className="navbar">
-        <div className="logo">LevelUp</div>
-        <div className="versao">Versão 1.0</div>
-        <div className="navbar-actions">
-          <button onClick={() => navigate('/login')} className="botao-login">Login</button>
-        </div>
-      </nav>
+<nav className="navbar">
+  {/* MUDANÇA AQUI: adicionar logo ao lado do nome */}
+  <button 
+    className="logo-button"
+    onClick={() => navigate('/')}
+    aria-label="Voltar para página inicial"
+    style={{
+      background: 'none',
+      border: 'none',
+      cursor: 'pointer',
+      padding: 0,
+      textAlign: 'left',
+      display: 'flex',
+      alignItems: 'center',
+      gap: '8px'
+    }}
+  >
+    {/* Adicionar a imagem da logo */}
+    <img 
+      src="lvlup-icon-re.png" 
+      alt="Level Up Logo" 
+      style={{
+        width: '32px',
+        height: '32px'
+      }}
+    />
+    <div className="logo">Level UP</div>
+  </button>
+  <div className="versao">Versão 1.0</div>
+  <div className="navbar-actions">
+    <button onClick={() => navigate('/login')} className="botao-login">Login</button>
+  </div>
+</nav>
 
       {/* Main content */}
       <div className="conteudo-principal">
@@ -70,7 +96,6 @@ function PaginaBemvindo() {
               <span>Começar agora</span>
             </button>
             <button className="botao-sabermais">Saber mais</button>
-           
           </div>
 
           <div className="features">

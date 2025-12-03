@@ -397,5 +397,34 @@ body::-webkit-scrollbar {
   .features {
     gap: 24px;
   }
+
+  /* APENAS adicione estas linhas no final do seu arquivo CSS */
+
+/* Estilo para o botão do logo */
+.logo-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  margin: 0;
+  text-align: left;
+  width: 100%;
+}
+
+.logo-button:hover .titulo {
+  color: #a78bfa;
+  text-decoration: underline;
+}
+
+.logo-button:hover .subtitulo {
+  color: #c4b5fd;
+}
+
+/* Mantenha o efeito visual ao passar o mouse */
+.titulo, .subtitulo {
+  transition: color 0.2s ease;
+}
+
+
 }
 

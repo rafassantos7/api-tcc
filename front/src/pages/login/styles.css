@@ -56,7 +56,9 @@ html, body, #root, #__next {
   transition: all 0.3s ease;
 }
 
-.login-box input::placeholder { color: #292727; }
+.login-box input::placeholder { 
+  color: #292727; 
+}
 
 .login-box input:focus {
   outline: none;
