@@ -1,0 +1,124 @@
+/* --- CONTAINER GERAL --- */
+.levelup-container {
+    width: 100%;
+    min-height: 100vh;
+    background: #6a05c986;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+}
+
+/* --- CARD CENTRAL --- */
+.card-tarefa {
+    background: #1a1a1a;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 0 15px rgba(120, 0, 255, 0.25);
+    border: 1px solid rgba(120, 0, 255, 0.4);
+
+    /* 👉 AQUI É A LARGURA DA CAIXA (Aumentei de 300px para 380px)
+       Se quiser aumentar mais, altere essa linha! */
+    width: 380px;
+
+    max-width: 600px;
+}
+
+/* --- TÍTULO --- */
+.card-tarefa h2 {
+    text-align: center;
+    color: #c88cff;
+    margin-bottom: 15px;
+}
+
+/* LABELS */
+.card-tarefa label {
+    color: #bfbfbf;
+    font-size: 14px;
+    margin-bottom: 5px;
+    display: block;
+}
+
+/* INPUTS E TEXTAREA */
+.input-pesquisa {
+    width: 100%;
+    padding: 12px;
+    background: #111;
+    border: 1px solid #5a0099;
+    border-radius: 8px;
+    color: white;
+    font-size: 15px;
+    outline: none;
+    transition: 0.2s;
+}
+
+.input-pesquisa:focus {
+    border-color: #b24cff;
+    box-shadow: 0 0 8px #b24cff80;
+}
+
+/* --- SELECT (TIPO DA META) --- */
+.select-tipo {
+    background: #111;
+    border: 1px solid #5a0099;
+    color: white;
+    padding: 10px;
+    border-radius: 8px;
+    width: 100%;
+    font-size: 15px;
+}
+
+.select-tipo:focus {
+    border-color: #b24cff;
+    box-shadow: 0 0 8px #b24cff80;
+}
+
+/* --- BOTÕES --- */
+.botao-nova {
+    background: #7d2bff;
+    border: none;
+    padding: 12px;
+    border-radius: 10px;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.botao-nova:hover {
+    background: #b24cff;
+    box-shadow: 0 0 10px #a64dff;
+}
+
+.botao-tarefas-livre {
+    background: transparent;
+    border: 1px solid #7d2bff;
+    padding: 12px;
+    border-radius: 10px;
+    color: #c88cff;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.botao-tarefas-livre:hover {
+    background: #7d2bff25;
+    box-shadow: 0 0 10px #7d2bff;
+}
+
+/* --- CONTAINER DE BOTÕES --- */
+.botoes-row {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+/* --- BLOCO ESPECIAL DO TIPO LIVRO (PÁGINAS) --- */
+.campo-livro {
+    background: #121212;
+    padding: 10px;
+    border-left: 3px solid #b24cff;
+    border-radius: 10px;
+    margin-top: 10px;
+}
