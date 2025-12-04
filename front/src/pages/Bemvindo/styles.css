@@ -1,4 +1,4 @@
-/* Reset e configurações base */
+/* --- 1. RESET E CONFIGURAÇÕES BASE (DO PRIMEIRO CÓDIGO) --- */
 html, body, #root {
   height: 100%;
   margin: 0;
@@ -10,12 +10,15 @@ body::-webkit-scrollbar {
   display: none; /* Para Chrome, Safari e Opera */
 }
 
-/* Container principal */
+/* --- 2. CONTAINERS E BACKGROUND --- */
 .pagina-bemvindo {
   min-height: 100vh;
-  background: linear-gradient(135deg, #0f172a 0%, #581c87 50%, #0f172a 100%);
+  /* Degradê original */
+  background: linear-gradient(135deg, #0f172a 0%, #581c87 50%, #0f172a 100%); 
   display: flex;
   flex-direction: column;
+  position: relative; /* Adicionado para contexto dos filhos */
+  overflow: hidden; /* Garante que os blobs não causem scroll */
 }
 
 /* Elementos decorativos de fundo */
@@ -29,38 +32,40 @@ body::-webkit-scrollbar {
   z-index: 1;
 }
 
+/* Blobs (Mantidos do primeiro código) */
 .blob {
   position: absolute;
   border-radius: 50%;
   filter: blur(60px);
   mix-blend-mode: multiply;
-  animation: pulse 4s ease-in-out infinite;
+  /* Usando a nova animação de 'float' para um movimento mais orgânico */
+  animation: float 10s ease-in-out infinite; 
 }
 
 .blob-1 {
-  top: 80px;
-  left: 80px;
-  width: 288px;
-  height: 288px;
-  background: #a855f7;
+  top: 10%;
+  left: 5%;
+  width: 384px;
+  height: 384px;
+  background: #a855f7; /* Violet */
 }
 
 .blob-2 {
-  top: 160px;
-  right: 80px;
-  width: 288px;
-  height: 288px;
-  background: #ec4899;
-  animation-delay: 1s;
+  top: 40%;
+  right: 10%;
+  width: 320px;
+  height: 320px;
+  background: #ec4899; /* Pink */
+  animation-delay: 2s;
 }
 
 .blob-3 {
-  bottom: -32px;
-  left: 160px;
+  bottom: 10%;
+  left: 10%;
   width: 288px;
   height: 288px;
-  background: #3b82f6;
-  animation-delay: 2s;
+  background: #3b82f6; /* Blue */
+  animation-delay: 4s;
 }
 
 /* Grid pattern */
@@ -78,30 +83,8 @@ body::-webkit-scrollbar {
   z-index: 2;
 }
 
-/* Navigation */
-.navbar {
-  position: relative;
-  z-index: 10;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 24px;
-}
-
-.logo {
-  color: white;
-  font-weight: bold;
-  font-size: 20px;
-}
-
-.versao {
-  color: white;
-  font-size: 14px;
-  opacity: 0.7;
-}
-
-/* Conteúdo principal */
-.conteudo-principal {
+/* --- 3. CONTEÚDO PRINCIPAL (HERO SECTION) --- */
+.hero-section {
   position: relative;
   z-index: 10;
   flex: 1;
@@ -109,6 +92,7 @@ body::-webkit-scrollbar {
   align-items: center;
   justify-content: center;
   padding: 24px;
+  min-height: 80vh; /* Ajuste para centralizar bem o conteúdo */
 }
 
 .conteudo-centro {
@@ -125,7 +109,10 @@ body::-webkit-scrollbar {
   transform: translateY(0);
 }
 
-/* Badge */
+/* O .logo-icon-wrapper FOI REMOVIDO */
+/* O .logo-icon FOI REMOVIDO */
+
+/* Badge (Mantido do primeiro código) */
 .badge {
   display: inline-flex;
   align-items: center;
@@ -149,21 +136,22 @@ body::-webkit-scrollbar {
   animation: pulse 2s infinite;
 }
 
-/* Títulos */
+/* Títulos (Ajustados para o novo layout) */
 .titulo-principal {
-  font-size: clamp(3rem, 8vw, 6rem);
-  font-weight: bold;
+  font-size: clamp(4rem, 10vw, 8rem); /* Um pouco maior */
+  font-weight: 900; /* Mais bold */
   background: linear-gradient(to right, #ffffff, #e9d5ff, #fce7f3);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
   color: transparent;
-  margin-bottom: 24px;
+  margin-bottom: 16px; /* Menos margem, pois o subtítulo já existe */
   line-height: 1.1;
+  text-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
 
 .titulo-destaque {
-  display: block;
+  display: inline; /* Alterado para inline */
   background: linear-gradient(to right, #a855f7, #ec4899);
   -webkit-background-clip: text;
   background-clip: text;
@@ -181,7 +169,7 @@ body::-webkit-scrollbar {
   line-height: 1.6;
 }
 
-/* Frase inspiradora */
+/* Frase inspiradora (Mantida) */
 .frase-container {
   background: rgba(255, 255, 255, 0.05);
   backdrop-filter: blur(8px);
@@ -202,22 +190,7 @@ body::-webkit-scrollbar {
   margin: 0;
 }
 
-/* Botões CTA */
-.botoes-cta {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 64px;
-}
-
-@media (min-width: 640px) {
-  .botoes-cta {
-    flex-direction: row;
-  }
-}
-
+/* Botão CTA (Adaptado) */
 .botao-comecar {
   position: relative;
   padding: 16px 32px;
@@ -228,8 +201,12 @@ body::-webkit-scrollbar {
   border: none;
   cursor: pointer;
   transition: all 0.3s ease;
-  font-size: 16px;
+  font-size: 18px; /* Ligeiramente maior */
   overflow: hidden;
+  display: inline-flex; /* Para alinhar o ícone */
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 64px;
 }
 
 .botao-comecar:hover {
@@ -248,6 +225,7 @@ body::-webkit-scrollbar {
   opacity: 0;
   transition: opacity 0.3s ease;
   border-radius: 16px;
+  z-index: 0;
 }
 
 .botao-comecar:hover::before {
@@ -259,100 +237,186 @@ body::-webkit-scrollbar {
   z-index: 1;
 }
 
-.botao-sabermais {
-  padding: 16px 32px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  color: white;
-  font-weight: 600;
-  border-radius: 16px;
-  background: transparent;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  backdrop-filter: blur(8px);
-  font-size: 16px;
+.cta-icon {
+    position: relative;
+    z-index: 1;
+    transition: transform 0.3s ease;
 }
 
-.botao-sabermais:hover {
-  background: rgba(255, 255, 255, 0.05);
+.botao-comecar:hover .cta-icon {
+    transform: translateX(4px);
 }
 
-/* Features */
-.features {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 32px;
-  max-width: 1024px;
-  margin: 0 auto;
+/* --- 4. SEÇÃO DE FEATURES (NOVO CONTEÚDO) --- */
+.features-secao {
+    padding: 80px 24px;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
-@media (min-width: 768px) {
-  .features {
-    grid-template-columns: repeat(3, 1fr);
-  }
+.secao-header {
+    text-align: center;
+    margin-bottom: 64px;
 }
 
-
-.botao-tarefa {
-  text-align: center;
-}
-.botao-relatorio-visual {
-  text-align: center;
-}
-.botao-meta {
-  text-align: center;
+.secao-titulo {
+    font-size: clamp(2rem, 4vw, 2.5rem);
+    font-weight: bold;
+    color: #1f2937; /* Cor escura, pois o fundo é branco/claro */
+    margin-bottom: 16px;
 }
 
-.botao-tarefa-icon {
-  width: 64px;
-  height: 64px;
-  border-radius: 16px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0 auto 16px;
-  font-size: 24px;
-  background: linear-gradient(to right, #a855f7, #ec4899);
-}
-.botao-relatorio-visual-icon {
-  width: 64px;
-  height: 64px;
-  border-radius: 16px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0 auto 16px;
-  font-size: 24px;
-  background: linear-gradient(to right, #3b82f6, #a855f7);
-}
-.botao-meta-icon {
-  width: 64px;
-  height: 64px;
-  border-radius: 16px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0 auto 16px;
-  font-size: 24px;
-  background: linear-gradient(to right, #10b981, #3b82f6);
-}
-.botao-tarefa h3,
-.botao-relatorio-visual h3,
-.botao-meta h3 {
-  color: white;
-  font-weight: 600;
-  margin-bottom: 8px;
-  font-size: 18px;
-}
-.botao-tarefa p,
-.botao-relatorio-visual p,
-.botao-meta p {
-  color: #9ca3af;
-  font-size: 14px;
-  line-height: 1.5;
-  margin: 0;
+.secao-subtitulo {
+    font-size: clamp(1rem, 2vw, 1.25rem);
+    color: #6b7280;
+    max-width: 768px;
+    margin: 0 auto;
 }
 
-/* Footer */
+.features-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
+}
+
+@media (min-width: 640px) {
+    .features-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 1024px) {
+    .features-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+.feature-card {
+    position: relative;
+    background-color: white;
+    border-radius: 16px;
+    border: 1px solid #f3f4f6;
+    padding: 32px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    overflow: hidden;
+    /* Efeito hover de card */
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.feature-card:hover {
+    border-color: #c4b5fd; /* Violeta claro */
+    box-shadow: 0 10px 25px -5px rgba(139, 92, 246, 0.1), 0 4px 6px -2px rgba(139, 92, 246, 0.05);
+    transform: translateY(-4px);
+}
+
+.feature-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, #f5f3ff, #f3e8ff); /* Fundo violeta suave no hover */
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 0;
+}
+
+.feature-card:hover::before {
+    opacity: 1;
+}
+
+.feature-content {
+    position: relative;
+    z-index: 1;
+}
+
+.feature-icon-wrapper {
+    display: inline-flex;
+    padding: 12px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #ede9fe, #f5eefc); /* Fundo claro do ícone */
+    margin-bottom: 16px;
+    transition: transform 0.3s ease;
+}
+
+.feature-card:hover .feature-icon-wrapper {
+    transform: scale(1.1);
+}
+
+.feature-icon {
+    color: #8b5cf6; /* Violet */
+    width: 28px;
+    height: 28px;
+}
+
+.feature-title {
+    font-size: 20px;
+    font-weight: bold;
+    color: #1f2937;
+    margin-bottom: 12px;
+}
+
+.feature-description {
+    color: #6b7280;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.feature-explore {
+    margin-top: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #8b5cf6;
+    font-weight: 600;
+    font-size: 14px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.feature-card:hover .feature-explore {
+    opacity: 1;
+}
+
+.explore-icon {
+    transition: transform 0.3s ease;
+}
+
+.feature-card:hover .explore-icon {
+    transform: translateX(4px);
+}
+
+/* --- 5. CTA SECUNDÁRIO E FOOTER --- */
+.cta-secundario-secao {
+    padding: 80px 24px;
+    text-align: center;
+}
+
+.cta-secundario-container {
+    max-width: 896px;
+    margin: 0 auto;
+    background: linear-gradient(135deg, #f5f3ff, #f3e8ff);
+    border-radius: 24px;
+    border: 1px solid #e9d5ff;
+    padding: 48px;
+}
+
+.cta-secundario-titulo {
+    color: #1f2937;
+}
+
+.cta-secundario-subtitulo {
+    color: #4b5563;
+    margin-bottom: 32px;
+}
+
+.cta-secundario-botao {
+    /* Reusa .botao-comecar, mas remove a margem de baixo e ajusta o tamanho */
+    margin-bottom: 0;
+    font-size: 16px;
+    padding: 14px 28px;
+}
+
+/* Footer (Mantido) */
 .footer {
   position: relative;
   z-index: 10;
@@ -360,9 +424,10 @@ body::-webkit-scrollbar {
   color: #9ca3af;
   font-size: 14px;
   padding: 24px;
+  border-top: 1px solid #475569; /* Linha de separação escura */
 }
 
-/* Animações */
+/* --- 6. ANIMAÇÕES (UNIFICADAS) --- */
 @keyframes pulse {
   0%, 100% {
     opacity: 1;
@@ -374,13 +439,18 @@ body::-webkit-scrollbar {
   }
 }
 
-/* Responsividade adicional */
-@media (max-width: 768px) {
-  .navbar {
-    padding: 16px;
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0) scale(1);
   }
-  
-  .conteudo-principal {
+  50% {
+    transform: translateY(-20px) scale(1.05);
+  }
+}
+
+/* --- 7. RESPONSIVIDADE ADICIONAL --- */
+@media (max-width: 768px) {
+  .hero-section {
     padding: 16px;
   }
   
@@ -393,38 +463,4 @@ body::-webkit-scrollbar {
     padding: 16px;
     margin-bottom: 32px;
   }
-  
-  .features {
-    gap: 24px;
-  }
-
-  /* APENAS adicione estas linhas no final do seu arquivo CSS */
-
-/* Estilo para o botão do logo */
-.logo-button {
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 0;
-  margin: 0;
-  text-align: left;
-  width: 100%;
 }
-
-.logo-button:hover .titulo {
-  color: #a78bfa;
-  text-decoration: underline;
-}
-
-.logo-button:hover .subtitulo {
-  color: #c4b5fd;
-}
-
-/* Mantenha o efeito visual ao passar o mouse */
-.titulo, .subtitulo {
-  transition: color 0.2s ease;
-}
-
-
-}
-

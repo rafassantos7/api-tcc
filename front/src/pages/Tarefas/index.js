@@ -60,7 +60,8 @@ export default function Home() {
 
   const menuItems = [
     { label: "Home", path: "/", icon: "🏠" },
-    { label: "Metas", path: "/metas", icon: "🎯" },
+    { label: "Tarefas", path: "/tarefas", icon: "📝"},
+    { label: "Hábitos", path: "/habitos", icon: "📊" },
   ];
 
   const handleDeleteTask = (id) => {

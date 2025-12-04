@@ -142,7 +142,7 @@ export default function TaskForm() {
             </div>
 
             {/* Tipo da meta */}
-            <div>
+            <div>met
               <label style={{ color: "#aaa" }}>Tipo</label>
               <select
                 className="input-pesquisa"

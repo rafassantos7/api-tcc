@@ -1,14 +1,23 @@
-// PaginaBemvindo.jsx
 import React, { useEffect, useState } from 'react';
-import './styles.css';
+import { ArrowRight, Gem, Target, BarChart3, Trophy, Zap, CheckCircle2 } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
+import './styles.css'; 
 
-function PaginaBemvindo() {
+export default function WelcomePage() {
   const navigate = useNavigate();
   const [frase, setFrase] = useState('');
   const [isLoaded, setIsLoaded] = useState(false);
 
+  const handleStart = () => {
+    navigate('/login');
+  };
+
+  const handleCadastro = () => {
+    navigate('/cadastro');
+  };
+
   useEffect(() => {
+    // Lógica da Frase Inspiradora
     const frasesInspiradoras = [
       "A jornada de mil milhas começa com um único passo.",
       "Não espere por oportunidades. Crie-as.",
@@ -22,8 +31,34 @@ function PaginaBemvindo() {
     ];
     const aleatoria = frasesInspiradoras[Math.floor(Math.random() * frasesInspiradoras.length)];
     setFrase(aleatoria);
+    
+    // Animação de carregamento
     setTimeout(() => setIsLoaded(true), 500);
   }, []);
+
+  const features = [
+    {
+      icon: Target,
+      title: 'Metas Inteligentes',
+      description: 'Defina objetivos claros e acompanhe seu progresso em tempo real com gráficos intuitivos.'
+    },
+    {
+      icon: BarChart3,
+      title: 'Análise Detalhada',
+      description: 'Visualize suas tarefas, metas e hábitos com dashboards completos e métricas precisas.'
+    },
+    {
+      icon: Zap,
+      title: 'Hábitos Poderosos',
+      description: 'Construa rotinas consistentes e acompanhe streaks para manter a motivação diária.'
+    },
+    {
+      icon: Trophy,
+      title: 'Gamificação',
+      title2: 'Gamificação', 
+      description: 'Ganhe experiência, desbloqueie conquistas e suba de nível conforme atinge seus objetivos.'
+    }
+  ];
 
   return (
     <div className="pagina-bemvindo">
@@ -33,92 +68,116 @@ function PaginaBemvindo() {
         <div className="blob blob-2"></div>
         <div className="blob blob-3"></div>
       </div>
-
       <div className="grid-pattern"></div>
 
-      {/* Navigation */}
-<nav className="navbar">
-  {/* MUDANÇA AQUI: adicionar logo ao lado do nome */}
-  <button 
-    className="logo-button"
-    onClick={() => navigate('/')}
-    aria-label="Voltar para página inicial"
-    style={{
-      background: 'none',
-      border: 'none',
-      cursor: 'pointer',
-      padding: 0,
-      textAlign: 'left',
-      display: 'flex',
-      alignItems: 'center',
-      gap: '8px'
-    }}
-  >
-    {/* Adicionar a imagem da logo */}
-    <img 
-      src="lvlup-icon-re.png" 
-      alt="Level Up Logo" 
-      style={{
-        width: '32px',
-        height: '32px'
-      }}
-    />
-    <div className="logo">Level UP</div>
-  </button>
-  <div className="versao">Versão 1.0</div>
-  <div className="navbar-actions">
-    <button onClick={() => navigate('/login')} className="botao-login">Login</button>
-  </div>
-</nav>
-
-      {/* Main content */}
-      <div className="conteudo-principal">
+      {/* Hero Section - Conteúdo Principal */}
+      <div className="hero-section">
         <div className={`conteudo-centro ${isLoaded ? 'loaded' : ''}`}>
+          
+          {/* Badge */}
           <div className="badge">
             <span className="status-dot"></span>
             Produtividade em primeiro lugar
           </div>
 
+          {/* Main Title */}
           <h1 className="titulo-principal">
-            Organize sua <span className="titulo-destaque">vida da melhor forma</span>
+            Level UP
           </h1>
-
+          
+          {/* Subtitle */}
           <p className="subtitulo">
-            Transforme suas ideias em ações concretas. Gerencie tarefas, projetos e metas de forma intuitiva e eficiente.
+            Transforme seus objetivos em realidade. Organize sua <span className="titulo-destaque">vida da melhor forma</span>
           </p>
 
+          {/* Frase Inspiradora */}
           <div className="frase-container">
             <p className="frase-inspiradora">"{frase}"</p>
           </div>
 
-          <div className="botoes-cta">
-            <button onClick={() => navigate('/cadastro')} className="botao-comecar">
-              <span>Começar agora</span>
-            </button>
-            <button className="botao-sabermais">Saber mais</button>
-          </div>
-
-          <div className="features">
-            <div className="botao-tarefa">
-              <div className="botao-tarefa-icon">✅</div>
-              <h3>Botão Tarefa</h3>
-              <p>Organize suas atividades com prioridades e lembretes automáticos</p>
-            </div>
-            <div className="botao-relatorio-visual">
-              <div className="botao-relatorio-visual-icon">📊</div>
-              <h3>Botão Relatório Visual</h3>
-              <p>Acompanhe seu progresso com gráficos e estatísticas detalhadas</p>
-            </div>
-            <div className="botao-meta">
-              <div className="botao-meta-icon">🎯</div>
-              <h3>Botão Meta</h3>
-              <p>Defina objetivos claros e acompanhe cada conquista</p>
-            </div>
-          </div>
+          {/* CTA Button */}
+          <button
+            onClick={handleCadastro}
+            className="botao-comecar cta-hero"
+          >
+            <span>Comece Agora</span>
+            <ArrowRight size={20} className="cta-icon" />
+          </button>
         </div>
+      </div>
+
+      {/* Features Grid Section */}
+      <div className="features-secao">
+        <div className="secao-header">
+          <h2 className="secao-titulo">
+            Tudo que você precisa em um só lugar
+          </h2>
+          <p className="secao-subtitulo">
+            Ferramentas completas para gerenciar sua vida, objetivos e desenvolvimento pessoal
+          </p>
+        </div>
+
+        <div className="features-grid">
+          {features.map((feature, index) => {
+            const Icon = feature.icon;
+            return (
+              <div key={index} className="feature-card">
+                <div className="feature-content">
+                  
+                  {/* Ícone */}
+                  <div className="feature-icon-wrapper">
+                    <Icon className="feature-icon" size={28} />
+                  </div>
+
+                  {/* Título */}
+                  <h3 className="feature-title">
+                    {feature.title}
+                  </h3>
+
+                  {/* Descrição */}
+                  <p className="feature-description">
+                    {feature.description}
+                  </p>
+
+                  {/* Seta de Explorar */}
+                  <div className="feature-explore">
+                    Explorar
+                    <ArrowRight size={16} className="explore-icon" />
+                  </div>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+
+      {/* Secondary CTA Section */}
+      <div className="cta-secundario-secao">
+        <div className="cta-secundario-container">
+          <h2 className="secao-titulo cta-secundario-titulo">
+            Pronto para começar sua jornada?
+          </h2>
+          <p className="secao-subtitulo cta-secundario-subtitulo">
+            Crie sua conta agora e comece a transformar seus sonhos em objetivos concretos e alcançáveis.
+          </p>
+
+          {/* BOTÃO ALTERADO PARA IR AO CADASTRO */}
+          <button
+            onClick={handleCadastro}
+            className="botao-comecar cta-secundario-botao"
+          >
+            <CheckCircle2 size={20} />
+            Começar Agora
+          </button>
+        </div>
+      </div>
+
+      {/* Footer */}
+      <div className="footer">
+        <p>
+          © 2024 LevelUp. Transformando vidas através de objetivos inteligentes.
+        </p>
       </div>
     </div>
   );
 }
-
-export default PaginaBemvindo;
