@@ -1,5 +1,6 @@
 import './styles.css';
 import { useState } from "react";
+import { useNavigate } from 'react-router-dom';
 
 function FormularioCadastro() {
     const navigate = useNavigate();
@@ -10,25 +11,103 @@ function FormularioCadastro() {
     const [senha, setSenha] = useState('');
     const [dataNascimento, setDataNascimento] = useState('');
     const [isLoading, setIsLoading] = useState(false);
+    const [mensagem, setMensagem] = useState({ texto: '', tipo: '' });
 
-    // Mock das funções para demonstração
-    const navigate = (path) => console.log('Navegando para:', path);
-    const exibirMensagem = (msg, tipo) => console.log(`${tipo.toUpperCase()}: ${msg}`);
+    const formatarTelefone = (valor) => {
+        const numeros = valor.replace(/\D/g, '');
+        if (numeros.length <= 10) {
+            return numeros.replace(/(\d{2})(\d{4})(\d{4})/, '($1) $2-$3');
+        } else {
+            return numeros.replace(/(\d{2})(\d{5})(\d{4})/, '($1) $2-$3');
+        }
+    };
+
+    const handleTelefoneChange = (e) => {
+        const valorFormatado = formatarTelefone(e.target.value);
+        setTelefone(valorFormatado);
+    };
+
+    const validarEmail = (email) => {
+        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    };
+
+    const validarTelefone = (telefone) => {
+        const numeros = telefone.replace(/\D/g, '');
+        return numeros.length >= 10 && numeros.length <= 11;
+    };
 
     const cadastrarUsuario = async () => {
         try {
             setIsLoading(true);
-            // Simular delay da API
+            setMensagem({ texto: '', tipo: '' });
+
+            // Validações
+            if (!nome.trim()) {
+                setMensagem({ texto: 'Preencha o nome completo!', tipo: 'erro' });
+                return;
+            }
+
+            if (!email.trim()) {
+                setMensagem({ texto: 'Preencha o email!', tipo: 'erro' });
+                return;
+            }
+
+            if (!validarEmail(email)) {
+                setMensagem({ texto: 'Digite um email válido!', tipo: 'erro' });
+                return;
+            }
+
+            if (!telefone.trim()) {
+                setMensagem({ texto: 'Preencha o telefone!', tipo: 'erro' });
+                return;
+            }
+
+            if (!validarTelefone(telefone)) {
+                setMensagem({ texto: 'Digite um telefone válido (10 ou 11 dígitos)!', tipo: 'erro' });
+                return;
+            }
+
+            if (!senha.trim()) {
+                setMensagem({ texto: 'Preencha a senha!', tipo: 'erro' });
+                return;
+            }
+
+            if (senha.length < 6) {
+                setMensagem({ texto: 'A senha deve ter pelo menos 6 caracteres!', tipo: 'erro' });
+                return;
+            }
+
+            if (!dataNascimento) {
+                setMensagem({ texto: 'Preencha a data de nascimento!', tipo: 'erro' });
+                return;
+            }
+
+            // Preparar dados para envio
+            const dadosCadastro = {
+                nome: nome.trim(),
+                email: email.trim().toLowerCase(),
+                telefone: telefone.replace(/\D/g, ''),
+                senha: senha,
+                dataNascimento: dataNascimento
+            };
+
+            console.log('Dados para cadastro:', dadosCadastro);
+            
+            // Simulação de chamada à API
             await new Promise(resolve => setTimeout(resolve, 2000));
             
-            // Sua lógica original aqui
-            const [ano, mes, dia] = dataNascimento.split('-');
-            const dataFormatada = `${dia}-${mes}-${ano}`;
-            
-            exibirMensagem('Usuário cadastrado com sucesso!', 'sucesso');
-            
-            // Limpa os campos
-            setNome(''); setEmail(''); setTelefone(''); setSenha(''); setDataNascimento('');
+            // Simulação de sucesso
+            setMensagem({ 
+                texto: 'Cadastro realizado com sucesso! Redirecionando...', 
+                tipo: 'sucesso' 
+            });
+
+            // Limpar formulário
+            setNome('');
+            setEmail('');
+            setTelefone('');
+            setSenha('');
+            setDataNascimento('');
             
             // Redirecionar após 2 segundos
             setTimeout(() => {
@@ -43,8 +122,6 @@ function FormularioCadastro() {
             if (error.response) {
                 // Erro da API
                 const errorData = error.response.data;
-                console.error('Detalhes do erro da API:', errorData);
-                
                 mensagemErro = errorData.message || errorData.error || 'Falha no cadastro. Verifique os dados.';
                 
                 // Tratamento específico para email duplicado
@@ -83,11 +160,11 @@ function FormularioCadastro() {
                 <div className="bolha bolha-azul"></div>
             </div>
             
-            {/* Navigation - APENAS ESTA PARTE FOI MODIFICADA */}
+            {/* Navigation */}
             <nav className="barra-navegacao">
                 <div className="logo-cadastro">LevelUp</div>
-                <a 
-                    href="/bemvindo" 
+                <button 
+                    onClick={handleVoltar}
                     className="link-voltar" 
                 >
                     ← Voltar
@@ -107,6 +184,14 @@ function FormularioCadastro() {
                                     Crie sua conta e comece a organizar suas tarefas de forma inteligente
                                 </p>
                             </div>
+                            
+                            {/* Mensagem de feedback */}
+                            {mensagem.texto && (
+                                <div className={`mensagem-erro ${mensagem.tipo === 'sucesso' ? 'mensagem-sucesso' : ''}`}>
+                                    {mensagem.texto}
+                                </div>
+                            )}
+                            
                             {/* Campos do formulário */}
                             <div className="espacamento-campos">
                                 <div className="campo-formulario">
@@ -149,11 +234,12 @@ function FormularioCadastro() {
                                     <label className="rotulo-campo">Senha</label>
                                     <input 
                                         type="password" 
-                                        placeholder="Crie uma senha segura" 
+                                        placeholder="Crie uma senha segura (mínimo 6 caracteres)" 
                                         value={senha} 
                                         onChange={(e) => setSenha(e.target.value)} 
                                         required 
                                         className="input-cadastro"
+                                        disabled={isLoading}
                                     />
                                 </div>
                                 <div className="campo-formulario">

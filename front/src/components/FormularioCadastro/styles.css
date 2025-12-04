@@ -1,7 +1,4 @@
-<<<<<<< HEAD
-/* =========================================================================
-   Variáveis CSS & Reset
-   ========================================================================= */
+
 :root {
   --primary-purple: #8b5cf6;
   --primary-purple-dark: #7c3aed;
@@ -29,394 +26,29 @@
 * {
   margin: 0;
   padding: 0;
-=======
-/* src\components\FormularioCadastro\styles.css */
-
-/* Reset e configurações base */
-html, body, #root {
-  height: 100%;
-  margin: 0;
-  padding: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
-}
-
-
-/* Container principal */
-.pagina-cadastro {
-  min-height: 100vh;
-  background: linear-gradient(135deg, #0f172a 0%, #581c87 50%, #0f172a 100%);
-  position: relative;
-  color: white;
-  .tela-cadastro {
-    min-height: 100vh;
-    background: linear-gradient(135deg, #0f172a 0%, #581c87 50%, #0f172a 100%);
-    position: relative;
-    overflow-x: hidden;
-    display: flex;
-    flex-direction: column;
-  }
-  .decoracao-fundo {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    opacity: 0.2;
-    z-index: 1;
-  }
-  .padrao-grade {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px);
-    background-size: 50px 50px;
-    opacity: 0.05;
-    z-index: 2;
-  }
-  .barra-navegacao {
-    position: relative;
-    z-index: 10;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 24px;
-    border-radius: 10px;
-  }
-  .logo-cadastro {
-    color: white;
-    font-weight: bold;
-    font-size: 20px;
-  }
-  .botao-voltar {
-    color: rgba(255, 255, 255, 0.7);
-    background: transparent;
-    border: none;
-    cursor: pointer;
-    font-size: 16px;
-    transition: color 0.2s ease;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-  .botao-voltar:hover {
-    color: white;
-  }
-  .conteudo-cadastro {
-    position: relative;
-    z-index: 10;
-    flex: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 24px;
-  }
-  .container-cadastro {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 32px;
-    max-width: 1200px;
-    width: 100%;
-  }
-  .formulario-cadastro {
-    width: 100%;
-    max-width: 448px;
-  }
-  .caixa-formulario {
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(16px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    border-radius: 24px;
-    padding: 32px;
-    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-  }
-  .cabecalho-formulario {
-    text-align: center;
-    margin-bottom: 32px;
-  }
-  .icone-formulario {
-    width: 64px;
-    height: 64px;
-    background: linear-gradient(to right, #a855f7, #ec4899);
-    border-radius: 16px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 auto 16px;
-  }
-  .icone-efeito {
-    font-size: 24px;
-  }
-  .titulo-principal {
-    font-size: 30px;
-    font-weight: bold;
-    color: #fff;
-    margin-bottom: 8px;
-  }
-  .frase-efeito {
-    color: #fff;
-    font-size: 14px;
-    line-height: 1.5;
-  }
-  .espacamento-campos {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-  }
-  .rotulo-campo {
-    display: block;
-    color: #fff;
-    font-size: 15px;
-    font-weight: 600;
-    margin-bottom: 8px;
-    letter-spacing: 0.5px;
-  }
-  .input-cadastro {
-    width: 100%;
-    padding: 12px 16px;
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 12px;
-    color: #fff;
-    font-size: 16px;
-    transition: all 0.2s ease;
-    box-sizing: border-box;
-  }
-  .input-cadastro::placeholder {
-    color: #e5e5e5;
-  }
-  .input-cadastro:focus {
-    border-color: #a855f7;
-    outline: none;
-  }
-  .botao-cadastrar-cadastro {
-    width: 100%;
-    padding: 16px 24px;
-    background: linear-gradient(to right, #9333ea, #db2777);
-    color: white;
-    font-weight: 600;
-    border-radius: 16px;
-    border: none;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    font-size: 16px;
-    overflow: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-  }
-  .botao-cadastrar-cadastro:disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
-  }
-  .botao-cadastrar-cadastro:hover:not(:disabled) {
-    transform: scale(1.05);
-    box-shadow: 0 25px 50px -12px rgba(168, 85, 247, 0.25);
-  }
-  
-  .informacoes-laterais {
-    display: none;
-    flex-direction: column;
-    gap: 32px;
-    width: 100%;
-    max-width: 448px;
-  }
-  @media (min-width: 1024px) {
-    .informacoes-laterais {
-      display: flex;
-    }
-  }
-  .espacamento-infos {
-    display: flex;
-    flex-direction: row;
-    gap: 32px;
-    justify-content: center;
-  }
-  .info-item {
-    display: flex;
-    align-items: flex-start;
-    gap: 16px;
-  }
-  .info-icone {
-  .informacoes-laterais {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    margin: 40px 0 0 0;
-    border-radius: 15px;
-  }
-  .espacamento-infos {
-    display: flex;
-    flex-direction: row;
-    gap: 48px;
-    justify-content: center;
-    width: 100%;
-    max-width: 1024px;
-  }
-  .info-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 12px;
-    min-width: 220px;
-    max-width: 300px;
-    text-align: center;
-  }
-  .info-icone {
-    margin-bottom: 8px;
-    border-radius: 15px;
-  }
-    flex-shrink: 0;
-    background: linear-gradient(to right, #a855f7, #ec4899);
-    color: white;
-  }
-  .azul-roxo {
-    background: linear-gradient(to right, #3b82f6, #a855f7) !important;
-  }
-  .verde-azul {
-    background: linear-gradient(to right, #10b981, #3b82f6) !important;
-  }
-  .icone-info {
-    font-size: 18px;
-    border-radius: 15px;    
-  }
-    .info-icone {
-      /* ...outras propriedades... */
-      border-radius: 20%; /* Deixa totalmente redonda */
-    }
-  
-  .titulo-info {
-    color: #fff;
-    font-weight: 600;
-    margin-bottom: 4px;
-  }
-  .descricao-info {
-    color: #e5e5e5;
-    font-size: 14px;
-  }
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 24px;
-}
-
-/* Container do formulário e features */
-.formulario-e-features {
-  display: flex;
-  align-items: center;
-  gap: 48px;
-  max-width: 1200px;
-  width: 100%;
-}
-
-@media (max-width: 1024px) {
-  .formulario-e-features {
-    flex-direction: column;
-    gap: 32px;
-  }
-}
-
-/* Container do formulário */
-.formulario-container {
-  width: 100%;
-  max-width: 448px;
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 24px;
-  padding: 32px;
-  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-}
-
-/* Header do formulário */
-.form-header {
-  text-align: center;
-  margin-bottom: 32px;
-}
-
-.logo-container {
-  margin-bottom: 16px;
-}
-
-.logo-placeholder {
-  width: 64px;
-  height: 64px;
-  background: linear-gradient(to right, #a855f7, #ec4899);
-  border-radius: 16px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0 auto;
-}
-
-.logo-icon {
-  font-size: 24px;
-}
-
-.form-titulo {
-  font-size: 30px;
-  font-weight: bold;
-  color: #fff;
-  margin-bottom: 8px;
-}
-
-.form-subtitulo {
-  color: #fff;
-  font-size: 14px;
-  line-height: 1.5;
-}
-
-/* Formulário */
-.formulario {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
-.input-group {
-  display: flex;
-  flex-direction: column;
-}
-
-.input-label {
-  display: block;
-  color: #fff;
-  font-size: 15px;
-  font-weight: 600;
-  margin-bottom: 8px;
-  letter-spacing: 0.5px;
-}
-
-.input-field {
-  width: 100%;
-  padding: 12px 16px;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 12px;
-  color: #fff;
-  font-size: 16px;
-  transition: all 0.2s ease;
->>>>>>> 50a36b4d95646cdad2f31a54c7a6523ecdcc7ee4
   box-sizing: border-box;
 }
 
-/* =========================================================================
-   Container Principal
-   ========================================================================= */
+html, body, #root {
+  height: 100%;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+
+.pagina-cadastro {
+  min-height: 100vh;
+  background: linear-gradient(135deg, var(--bg-darker) 0%, var(--bg-dark) 100%);
+  color: white;
+  position: relative;
+}
+
 .tela-cadastro {
   min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 2rem;
   background: linear-gradient(135deg, var(--bg-darker) 0%, var(--bg-dark) 100%);
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   position: relative;
-  overflow: hidden;
-  border-radius: 5%;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
   animation: fadeIn 1s ease-out;
 }
 
@@ -431,9 +63,6 @@ html, body, #root {
   }
 }
 
-/* =========================================================================
-   Decoração de Fundo Aprimorada
-   ========================================================================= */
 .decoracao-fundo {
   position: absolute;
   inset: 0;
@@ -491,22 +120,26 @@ html, body, #root {
   }
 }
 
-/* =========================================================================
-   Barra de Navegação Aprimorada
-   ========================================================================= */
-.barra-navegacao {
-  position: fixed;
+.padrao-grade {
+  position: absolute;
   top: 0;
   left: 0;
-  right: 0;
-  padding: 1.5rem 2rem;
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px);
+  background-size: 50px 50px;
+  opacity: 0.05;
+  z-index: 2;
+}
+
+.barra-navegacao {
+  position: relative;
+  z-index: 10;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: rgba(15, 23, 42, 0.8);
-  backdrop-filter: blur(10px);
-  border-bottom: 1px solid var(--border-dark);
-  z-index: 1000;
+  padding: 24px;
+  border-radius: 10px;
 }
 
 .logo-cadastro {
@@ -524,62 +157,47 @@ html, body, #root {
   transform: scale(1.05);
 }
 
-.link-voltar {
+.botao-voltar {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 8px;
   color: var(--text-light);
-  text-decoration: none;
-  font-weight: 500;
+  background: transparent;
+  border: 1px solid var(--border-dark);
   padding: 0.75rem 1.5rem;
   border-radius: var(--radius-md);
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid var(--border-dark);
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 500;
   transition: all var(--transition-base);
 }
 
-.link-voltar:hover {
+.botao-voltar:hover {
   color: var(--primary-purple);
   background: rgba(139, 92, 246, 0.1);
   border-color: var(--primary-purple);
   transform: translateX(-4px);
 }
 
-/* =========================================================================
-   Container do Formulário
-   ========================================================================= */
 .conteudo-cadastro {
-  width: 100%;
-  max-width: 1200px;
+  position: relative;
   z-index: 10;
-  padding: 2rem;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
 }
 
 .container-cadastro {
-  display: grid;
-  gap: 0;
-  background: rgba(255, 255, 255, 0.03);
-  backdrop-filter: blur(20px);
-  border: 1px solid var(--border-dark);
-  border-radius: var(--radius-xl);
-  overflow: hidden;
-  box-shadow: var(--shadow-lg);
-  transition: transform var(--transition-slow);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+  max-width: 1200px;
+  width: 100%;
 }
 
-.container-cadastro:hover {
-  transform: translateY(-5px);
-}
-
-@media (min-width: 768px) {
-  .container-cadastro {
-    grid-template-columns: 1.2fr 0.8fr;
-  }
-}
-
-/* =========================================================================
-   Mensagem de Erro - Versão Melhorada para Visibilidade
-   ========================================================================= */
 .mensagem-erro {
   background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
   color: white;
@@ -600,9 +218,10 @@ html, body, #root {
   letter-spacing: 0.5px;
   text-transform: uppercase;
   backdrop-filter: blur(5px);
+  width: 100%;
+  max-width: 448px;
 }
 
-/* Adiciona borda brilhante pulsante */
 .mensagem-erro::before {
   content: '';
   position: absolute;
@@ -617,7 +236,6 @@ html, body, #root {
   filter: blur(3px);
 }
 
-/* Adiciona efeito de brilho interno */
 .mensagem-erro::after {
   content: '';
   position: absolute;
@@ -634,7 +252,6 @@ html, body, #root {
   animation: shimmer 2s infinite;
 }
 
-/* Animações específicas para a mensagem de erro */
 @keyframes shake {
   0%, 100% { transform: translateX(0); }
   10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
@@ -666,25 +283,31 @@ html, body, #root {
   100% { left: 200%; }
 }
 
-/* Efeito hover adicional */
 .mensagem-erro:hover {
   transform: scale(1.02);
   transition: transform 0.3s ease;
 }
 
-/* Para mensagens de erro em formulários específicos */
-.formulario-cadastro .mensagem-erro {
-  margin: 0 0 1.5rem 0;
-  animation: 
-    slideDown 0.4s ease-out,
-    shake 0.5s ease-in-out 0.4s,
-    pulse 2s infinite 0.9s;
+.formulario-cadastro {
+  width: 100%;
+  max-width: 448px;
 }
 
-@keyframes slideDown {
+.caixa-formulario {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 24px;
+  padding: 32px;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  animation: slideUp 0.5s ease-out forwards;
+  opacity: 0;
+}
+
+@keyframes slideUp {
   from {
     opacity: 0;
-    transform: translateY(-20px);
+    transform: translateY(20px);
   }
   to {
     opacity: 1;
@@ -692,44 +315,20 @@ html, body, #root {
   }
 }
 
-/* Para fundos escuros (melhor contraste) */
-.tela-cadastro .mensagem-erro {
-  background: linear-gradient(135deg, #ef4444 0%, #b91c1c 100%);
-  color: #ffffff;
-  border: 2px solid #f87171;
-  box-shadow: 
-    0 0 0 4px rgba(239, 68, 68, 0.2),
-    0 10px 30px rgba(185, 28, 28, 0.5);
-}
-
-/* =========================================================================
-   Estilos do Formulário
-   ========================================================================= */
-.formulario-cadastro {
-  padding: 3rem;
-  background: rgba(15, 23, 42, 0.6);
-}
-
-.caixa-formulario {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-}
-
 .cabecalho-formulario {
   text-align: center;
-  margin-bottom: 2.5rem;
+  margin-bottom: 32px;
 }
 
 .icone-formulario {
-  margin-bottom: 1rem;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
   width: 80px;
   height: 80px;
-  border-radius: 50%;
   background: var(--gradient-primary);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 16px;
   box-shadow: 0 10px 30px rgba(139, 92, 246, 0.4);
   animation: pulseIcon 2s infinite;
 }
@@ -763,29 +362,21 @@ html, body, #root {
   margin: 0 auto;
 }
 
-/* =========================================================================
-   Campos do Formulário
-   ========================================================================= */
+
 .espacamento-campos {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 20px;
 }
 
 .rotulo-campo {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  display: block;
   color: var(--text-light);
-  font-size: 0.875rem;
+  font-size: 15px;
   font-weight: 600;
-  margin-bottom: 0.5rem;
-  text-transform: uppercase;
+  margin-bottom: 8px;
   letter-spacing: 0.5px;
-}
-
-.input-wrapper {
-  position: relative;
+  text-transform: uppercase;
 }
 
 .input-cadastro {
@@ -797,8 +388,7 @@ html, body, #root {
   color: var(--text-white);
   font-size: 1rem;
   transition: all var(--transition-base);
-  position: relative;
-  z-index: 1;
+  box-sizing: border-box;
 }
 
 .input-cadastro::placeholder {
@@ -811,34 +401,6 @@ html, body, #root {
   border-color: var(--primary-purple);
   background: rgba(139, 92, 246, 0.05);
   box-shadow: 0 0 0 4px rgba(139, 92, 246, 0.1);
-}
-
-.input-cadastro:not(:placeholder-shown) {
-  background: rgba(255, 255, 255, 0.07);
-}
-
-.input-wrapper::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 0;
-  height: 2px;
-  background: var(--gradient-primary);
-  transition: width var(--transition-base);
-}
-
-.input-wrapper:focus-within::after {
-  width: 100%;
-}
-
-/* =========================================================================
-   Botão de Cadastro Aprimorado
-   ========================================================================= */
-.botao-wrapper {
-  margin-top: 2.5rem;
-  position: relative;
 }
 
 .botao-cadastrar-cadastro {
@@ -860,6 +422,7 @@ html, body, #root {
   gap: 0.75rem;
   letter-spacing: 0.5px;
   text-transform: uppercase;
+  margin-top: 2.5rem;
 }
 
 .botao-cadastrar-cadastro::before {
@@ -873,7 +436,7 @@ html, body, #root {
   transition: left 0.7s ease;
 }
 
-.botao-cadastrar-cadastro:hover {
+.botao-cadastrar-cadastro:hover:not(:disabled) {
   transform: translateY(-3px);
   box-shadow: var(--shadow-purple);
 }
@@ -893,232 +456,37 @@ html, body, #root {
   box-shadow: none !important;
 }
 
-.botao-cadastrar-cadastro svg {
-  animation: spin 1s linear infinite;
-}
 
-@keyframes spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
-
-/* =========================================================================
-   Seção de Informações Laterais
-   ========================================================================= */
 .informacoes-laterais {
-  padding: 3rem;
-  background: linear-gradient(135deg, rgba(139, 92, 246, 0.1) 0%, rgba(236, 72, 153, 0.1) 100%);
-  backdrop-filter: blur(10px);
-  border-left: 1px solid var(--border-light);
-  position: relative;
-  overflow: hidden;
-}
-
-.informacoes-laterais::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: radial-gradient(circle at top right, rgba(139, 92, 246, 0.2), transparent 70%);
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin: 40px 0 0 0;
 }
 
 .espacamento-infos {
   display: flex;
-  flex-direction: column;
-  gap: 2.5rem;
-  position: relative;
-  z-index: 1;
-}
-
-.espacamento-infos h3 {
-  font-size: 1.5rem;
-  font-weight: 700;
-  background: linear-gradient(135deg, #ffffff 0%, #d8b4fe 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  margin-bottom: 1.5rem;
-  padding-bottom: 0.75rem;
-  border-bottom: 2px solid rgba(139, 92, 246, 0.3);
+  flex-direction: row;
+  gap: 48px;
+  justify-content: center;
+  width: 100%;
+  max-width: 1024px;
+  flex-wrap: wrap;
 }
 
 .info-item {
   display: flex;
-  align-items: flex-start;
-  gap: 1.25rem;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  min-width: 220px;
+  max-width: 300px;
+  text-align: center;
   padding: 1.5rem;
   background: rgba(255, 255, 255, 0.05);
   border-radius: var(--radius-md);
   border: 1px solid var(--border-dark);
   transition: all var(--transition-base);
-  position: relative;
-  overflow: hidden;
-}
-
-.info-item:hover {
-  transform: translateX(10px);
-  background: rgba(255, 255, 255, 0.08);
-  border-color: var(--primary-purple);
-}
-
-.info-item::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  width: 4px;
-  background: var(--gradient-primary);
-  opacity: 0;
-  transition: opacity var(--transition-base);
-}
-
-.info-item:hover::before {
-  opacity: 1;
-}
-
-.info-icone {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 56px;
-  height: 56px;
-  border-radius: 14px;
-  font-size: 1.5rem;
-  transition: all var(--transition-base);
-}
-
-.info-item:nth-child(1) .info-icone {
-  background: linear-gradient(135deg, var(--primary-purple), #7c3aed);
-}
-
-.info-item:nth-child(2) .info-icone {
-  background: linear-gradient(135deg, var(--primary-pink), #db2777);
-}
-
-.info-item:nth-child(3) .info-icone {
-  background: linear-gradient(135deg, var(--primary-blue), #2563eb);
-}
-
-.info-item:hover .info-icone {
-  transform: scale(1.1) rotate(5deg);
-}
-
-.info-conteudo {
-  flex: 1;
-}
-
-.titulo-info {
-  font-size: 1.125rem;
-  font-weight: 700;
-  color: white;
-  margin-bottom: 0.5rem;
-}
-
-<<<<<<< HEAD
-.descricao-info {
-  font-size: 0.9375rem;
-  color: var(--text-light);
-  line-height: 1.6;
-}
-
-/* =========================================================================
-   Responsividade
-   ========================================================================= */
-@media (max-width: 767px) {
-  .tela-cadastro {
-    padding: 1rem;
-  }
-  
-  .barra-navegacao {
-    padding: 1rem;
-    flex-direction: column;
-    gap: 1rem;
-    text-align: center;
-  }
-  
-  .conteudo-cadastro {
-    padding: 1rem;
-  }
-  
-  .formulario-cadastro {
-    padding: 2rem 1.5rem;
-  }
-  
-  .titulo-principal {
-    font-size: 2rem;
-  }
-  
-  .informacoes-laterais {
-    padding: 2rem 1.5rem;
-    border-left: none;
-    border-top: 1px solid var(--border-light);
-  }
-  
-  .info-item {
-=======
-
-
-form {
-    display: flex;
->>>>>>> 50a36b4d95646cdad2f31a54c7a6523ecdcc7ee4
-    flex-direction: column;
-    text-align: center;
-  }
-  
-  .info-icone {
-    align-self: center;
-  }
-}
-
-@media (max-width: 480px) {
-  .formulario-cadastro {
-    padding: 1.5rem 1rem;
-  }
-  
-  .titulo-principal {
-    font-size: 1.75rem;
-  }
-  
-  .input-cadastro {
-    padding: 0.875rem;
-  }
-  
-  .botao-cadastrar-cadastro {
-    padding: 1rem;
-    font-size: 1rem;
-  }
-}
-
-/* =========================================================================
-   Animações de Entrada dos Itens
-   ========================================================================= */
-.caixa-formulario > * {
-  animation: slideUp 0.5s ease-out forwards;
-  opacity: 0;
-}
-
-@keyframes slideUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.caixa-formulario > *:nth-child(1) { animation-delay: 0.1s; }
-.caixa-formulario > *:nth-child(2) { animation-delay: 0.2s; }
-.caixa-formulario > *:nth-child(3) { animation-delay: 0.3s; }
-.caixa-formulario > *:nth-child(4) { animation-delay: 0.4s; }
-.caixa-formulario > *:nth-child(5) { animation-delay: 0.5s; }
-.caixa-formulario > *:nth-child(6) { animation-delay: 0.6s; }
-
-.info-item {
   animation: fadeInRight 0.5s ease-out forwards;
   opacity: 0;
 }
@@ -1138,50 +506,135 @@ form {
 .info-item:nth-child(2) { animation-delay: 0.8s; }
 .info-item:nth-child(3) { animation-delay: 0.9s; }
 
-/* =========================================================================
-   Estados de Foco Aprimorados
-   ========================================================================= */
-.input-cadastro:focus ~ .focus-ring {
+.info-item:hover {
+  transform: translateY(-5px);
+  background: rgba(255, 255, 255, 0.08);
+  border-color: var(--primary-purple);
+}
+
+.info-icone {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 20%;
+  font-size: 1.5rem;
+  transition: all var(--transition-base);
+  margin-bottom: 8px;
+}
+
+.info-item:nth-child(1) .info-icone {
+  background: linear-gradient(135deg, var(--primary-purple), #7c3aed);
+}
+
+.info-item:nth-child(2) .info-icone {
+  background: linear-gradient(135deg, var(--primary-pink), #db2777);
+}
+
+.info-item:nth-child(3) .info-icone {
+  background: linear-gradient(135deg, var(--primary-blue), #2563eb);
+}
+
+.info-item:hover .info-icone {
+  transform: scale(1.1) rotate(5deg);
+}
+
+.icone-info {
+  font-size: 18px;
+  color: white;
+}
+
+.titulo-info {
+  color: #fff;
+  font-weight: 600;
+  margin-bottom: 4px;
+  font-size: 1.125rem;
+}
+
+.descricao-info {
+  color: var(--text-light);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+
+@media (max-width: 768px) {
+  .espacamento-infos {
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+  }
+  
+  .info-item {
+    width: 100%;
+    max-width: 400px;
+  }
+  
+  .titulo-principal {
+    font-size: 2rem;
+  }
+  
+  .barra-navegacao {
+    padding: 16px;
+    flex-direction: column;
+    gap: 16px;
+    text-align: center;
+  }
+  
+  .formulario-cadastro {
+    padding: 0 16px;
+  }
+  
+  .caixa-formulario {
+    padding: 24px;
+  }
+}
+
+@media (max-width: 480px) {
+  .titulo-principal {
+    font-size: 1.75rem;
+  }
+  
+  .icone-formulario {
+    width: 64px;
+    height: 64px;
+  }
+  
+  .icone-efeito {
+    font-size: 24px;
+  }
+  
+  .input-cadastro {
+    padding: 0.875rem;
+  }
+  
+  .botao-cadastrar-cadastro {
+    padding: 1rem;
+    font-size: 1rem;
+  }
+}
+
+.input-wrapper {
+  position: relative;
+}
+
+.input-wrapper::after {
+  content: '';
   position: absolute;
-  top: -2px;
-  left: -2px;
-  right: -2px;
-  bottom: -2px;
-  border-radius: var(--radius-md);
-  box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.2);
-  pointer-events: none;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 2px;
+  background: var(--gradient-primary);
+  transition: width var(--transition-base);
 }
 
-/* =========================================================================
-   Loader para o Botão
-   ========================================================================= */
-.loader {
-  display: inline-block;
-  width: 20px;
-  height: 20px;
-  border: 3px solid rgba(255, 255, 255, 0.3);
-  border-radius: 50%;
-  border-top-color: white;
-  animation: spin 1s ease-in-out infinite;
+.input-wrapper:focus-within::after {
+  width: 100%;
 }
 
-@keyframes spin {
-  to { transform: rotate(360deg); }
-}
-
-/* =========================================================================
-   Efeito de Vidro (Glassmorphism)
-   ========================================================================= */
-.glass-effect {
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-/* =========================================================================
-   Validação Visual
-   ========================================================================= */
 .input-cadastro.valid {
   border-color: #10b981;
   background: rgba(16, 185, 129, 0.05);
@@ -1206,4 +659,18 @@ form {
 
 .validation-message.invalid {
   color: #ef4444;
+}
+
+.loader {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top-color: white;
+  animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
 }
