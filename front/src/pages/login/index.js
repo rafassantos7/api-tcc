@@ -1,8 +1,12 @@
-import React, { useEffect } from "react";
-import "./styles.css";
-import { useNavigate } from "react-router-dom";
+// src\pages\Cadastro\index.js
+
+import { LogIn } from 'lucide-react'    // ÍCONE
+import Login from '../../components/Login' // Seu componente
+import './styles.css'
+
 
 function PaginaLogin() {
+<<<<<<< HEAD
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -152,6 +156,13 @@ function PaginaLogin() {
     }, [navigate]); // navigate deve estar nas dependências do useEffect
 
     return <div id="login-root" className="page-login"></div>;
+=======
+    return (
+        <div className='pagina-login'>
+            <LogIn/>
+        </div>
+    )
+>>>>>>> 50a36b4d95646cdad2f31a54c7a6523ecdcc7ee4
 }
 
 export default PaginaLogin;

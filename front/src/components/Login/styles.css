@@ -1,6 +1,12 @@
-/* src\pages\Cadastro\styles.css */
+/* ===== Reset e garantia de 100% de altura para React/Next/CRA ===== */
+html, body, #root, #__next {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+}
 
-<<<<<<< HEAD
 /* Caso o seu app use outro id raiz, adicione aqui também:
    ex: #app-root { height: 100%; } 
 */
@@ -50,9 +56,7 @@
   transition: all 0.3s ease;
 }
 
-.login-box input::placeholder { 
-  color: #292727; 
-}
+.login-box input::placeholder { color: #292727; }
 
 .login-box input:focus {
   outline: none;
@@ -92,46 +96,3 @@
   .login-box { padding: 20px; border-radius: 14px; }
   .login-box h3 { font-size: 22px; }
 }
-
-/* ===== Área de Alternância (Toggle Area) ===== */
-.toggle-area {
-margin-top: 20px;
-padding-top: 15px;
-border-top: 1px solid rgba(255, 255, 255, 0.1); /* Linha divisória sutil */
-color: white;
-font-size: 15px;
-}
-
-.toggle-area p {
-    margin: 0;
-    margin-bottom: 8px;
-    font-weight: 300;
-}
-
-.toggle-button {
-background: none; /* Torna o botão parecer um link */
-border: none;
-color: #ffffff; /* Cor de link mais clara */
-font-size: 15px;
-font-weight: 700;
-cursor: pointer;
-transition: color 0.3s ease;
-padding: 0;
-}
-
-.toggle-button:hover {
-color: #c471ed; /* Roxo claro no hover */
-transform: none; /* Remove a animação de escala do botão principal */     
-box-shadow: none;
-}
-
-=======
-.pagina-login {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh;
-    padding: 32px;
-    background-color: #f4f4f4; 
-  }
->>>>>>> 50a36b4d95646cdad2f31a54c7a6523ecdcc7ee4

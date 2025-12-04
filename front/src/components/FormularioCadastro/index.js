@@ -1,6 +1,5 @@
 import './styles.css';
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 
 function FormularioCadastro() {
     const navigate = useNavigate();
@@ -11,113 +10,25 @@ function FormularioCadastro() {
     const [senha, setSenha] = useState('');
     const [dataNascimento, setDataNascimento] = useState('');
     const [isLoading, setIsLoading] = useState(false);
-    const [mensagem, setMensagem] = useState({ texto: '', tipo: '' });
 
-    // Validações (mantido igual)
-    const validarEmail = (email) => {
-        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-    };
-
-    const validarTelefone = (telefone) => {
-        const numeros = telefone.replace(/\D/g, '');
-        return numeros.length >= 10 && numeros.length <= 11;
-    };
-
-    const validarSenha = (senha) => {
-        return senha.length >= 6;
-    };
-
-    const formatarTelefone = (valor) => {
-        const numeros = valor.replace(/\D/g, '');
-        if (numeros.length <= 10) {
-            return numeros.replace(/(\d{2})(\d{4})(\d{4})/, '($1) $2-$3');
-        } else {
-            return numeros.replace(/(\d{2})(\d{5})(\d{4})/, '($1) $2-$3');
-        }
-    };
-
-    // Converter data de YYYY-MM-DD para dd/mm/yyyy
-    const formatarDataParaAPI = (dataYYYYMMDD) => {
-        if (!dataYYYYMMDD) return '';
-        
-        const [ano, mes, dia] = dataYYYYMMDD.split('-');
-        return `${dia}/${mes}/${ano}`;
-    };
-
-    const handleTelefoneChange = (e) => {
-        const valorFormatado = formatarTelefone(e.target.value);
-        setTelefone(valorFormatado);
-    };
+    // Mock das funções para demonstração
+    const navigate = (path) => console.log('Navegando para:', path);
+    const exibirMensagem = (msg, tipo) => console.log(`${tipo.toUpperCase()}: ${msg}`);
 
     const cadastrarUsuario = async () => {
         try {
             setIsLoading(true);
-            setMensagem({ texto: '', tipo: '' });
-
-            // Validações antes de enviar (mantido igual)
-            if (!nome.trim()) {
-                setMensagem({ texto: 'Preencha o nome completo!', tipo: 'erro' });
-                return;
-            }
-
-            if (!email.trim()) {
-                setMensagem({ texto: 'Preencha o email!', tipo: 'erro' });
-                return;
-            }
-
-            if (!validarEmail(email)) {
-                setMensagem({ texto: 'Digite um email válido!', tipo: 'erro' });
-                return;
-            }
-
-            if (!telefone.trim()) {
-                setMensagem({ texto: 'Preencha o telefone!', tipo: 'erro' });
-                return;
-            }
-
-            if (!validarTelefone(telefone)) {
-                setMensagem({ texto: 'Digite um telefone válido (10 ou 11 dígitos)!', tipo: 'erro' });
-                return;
-            }
-
-            if (!senha.trim()) {
-                setMensagem({ texto: 'Preencha a senha!', tipo: 'erro' });
-                return;
-            }
-
-            if (!validarSenha(senha)) {
-                setMensagem({ texto: 'A senha deve ter pelo menos 6 caracteres!', tipo: 'erro' });
-                return;
-            }
-
-            if (!dataNascimento) {
-                setMensagem({ texto: 'Preencha a data de nascimento!', tipo: 'erro' });
-                return;
-            }
-
-            // Preparar dados para envio
-            const dadosCadastro = {
-                nome: nome.trim(),
-                email: email.trim().toLowerCase(),
-                telefone: telefone.replace(/\D/g, ''),
-                senha: senha,
-                dataNascimento: formatarDataParaAPI(dataNascimento)
-            };
-
-            console.log('Dados enviados para API:', dadosCadastro);
+            // Simular delay da API
+            await new Promise(resolve => setTimeout(resolve, 2000));
             
-            // Sucesso no cadastro
-            setMensagem({ 
-                texto: 'Cadastro realizado com sucesso! Redirecionando...', 
-                tipo: 'sucesso' 
-            });
-
-            // Limpar formulário
-            setNome('');
-            setEmail('');
-            setTelefone('');
-            setSenha('');
-            setDataNascimento('');
+            // Sua lógica original aqui
+            const [ano, mes, dia] = dataNascimento.split('-');
+            const dataFormatada = `${dia}-${mes}-${ano}`;
+            
+            exibirMensagem('Usuário cadastrado com sucesso!', 'sucesso');
+            
+            // Limpa os campos
+            setNome(''); setEmail(''); setTelefone(''); setSenha(''); setDataNascimento('');
             
             // Redirecionar após 2 segundos
             setTimeout(() => {
@@ -174,26 +85,9 @@ function FormularioCadastro() {
             
             {/* Navigation - APENAS ESTA PARTE FOI MODIFICADA */}
             <nav className="barra-navegacao">
-                {/* MUDANÇA AQUI: envolva o Level UP em um botão */}
-                <button 
-                    onClick={() => navigate('/')}
-                    className="logo-cadastro"
-                    style={{
-                        background: 'none',
-                        border: 'none',
-                        cursor: 'pointer',
-                        padding: 0,
-                        textAlign: 'left',
-                        fontFamily: 'inherit',
-                        fontSize: 'inherit',
-                        fontWeight: 'inherit',
-                        color: 'inherit'
-                    }}
-                >
-                    Level UP
-                </button>
-                <button 
-                    onClick={handleVoltar}
+                <div className="logo-cadastro">LevelUp</div>
+                <a 
+                    href="/bemvindo" 
                     className="link-voltar" 
                 >
                     ← Voltar
@@ -213,14 +107,6 @@ function FormularioCadastro() {
                                     Crie sua conta e comece a organizar suas tarefas de forma inteligente
                                 </p>
                             </div>
-                            
-                            {/* Mensagem de feedback */}
-                            {mensagem.texto && (
-                                <div className={`mensagem-erro ${mensagem.tipo === 'sucesso' ? 'mensagem-sucesso' : ''}`}>
-                                    {mensagem.texto}
-                                </div>
-                            )}
-                            
                             {/* Campos do formulário */}
                             <div className="espacamento-campos">
                                 <div className="campo-formulario">
@@ -259,16 +145,15 @@ function FormularioCadastro() {
                                         disabled={isLoading}
                                     />
                                 </div>
-                                <div className="campo-formulario">
+                                <div className="campo-formulario campo-senha">
                                     <label className="rotulo-campo">Senha</label>
                                     <input 
-                                        type="password"
-                                        placeholder="Crie uma senha segura (mínimo 6 caracteres)" 
+                                        type="password" 
+                                        placeholder="Crie uma senha segura" 
                                         value={senha} 
                                         onChange={(e) => setSenha(e.target.value)} 
                                         required 
                                         className="input-cadastro"
-                                        disabled={isLoading}
                                     />
                                 </div>
                                 <div className="campo-formulario">
