@@ -262,13 +262,13 @@ body::-webkit-scrollbar {
 .secao-titulo {
     font-size: clamp(2rem, 4vw, 2.5rem);
     font-weight: bold;
-    color: #1f2937; /* Cor escura, pois o fundo é branco/claro */
+    color: lch(94.72% 1.69 265.88); /* Cor escura, pois o fundo é branco/claro */
     margin-bottom: 16px;
 }
-
+tarefas tá com erro
 .secao-subtitulo {
     font-size: clamp(1rem, 2vw, 1.25rem);
-    color: #6b7280;
+    color: #f6f7fa;
     max-width: 768px;
     margin: 0 auto;
 }

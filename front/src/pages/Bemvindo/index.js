@@ -151,33 +151,6 @@ export default function WelcomePage() {
         </div>
       </div>
 
-      {/* Secondary CTA Section */}
-      <div className="cta-secundario-secao">
-        <div className="cta-secundario-container">
-          <h2 className="secao-titulo cta-secundario-titulo">
-            Pronto para começar sua jornada?
-          </h2>
-          <p className="secao-subtitulo cta-secundario-subtitulo">
-            Crie sua conta agora e comece a transformar seus sonhos em objetivos concretos e alcançáveis.
-          </p>
-
-          {/* BOTÃO ALTERADO PARA IR AO CADASTRO */}
-          <button
-            onClick={handleCadastro}
-            className="botao-comecar cta-secundario-botao"
-          >
-            <CheckCircle2 size={20} />
-            Começar Agora
-          </button>
-        </div>
-      </div>
-
-      {/* Footer */}
-      <div className="footer">
-        <p>
-          © 2024 LevelUp. Transformando vidas através de objetivos inteligentes.
-        </p>
-      </div>
     </div>
   );
 }

@@ -6,6 +6,7 @@ function PaginaLogin() {
     const navigate = useNavigate();
 
     useEffect(() => {
+        // --- 1. CRIAÇÃO DO BOX E ELEMENTOS EXISTENTES ---
         const box = document.createElement("div");
         box.className = "login-box";
 
@@ -38,12 +39,26 @@ function PaginaLogin() {
         const divRoot = document.getElementById("login-root");
         divRoot.appendChild(box);
 
-        // --- VALIDAÇÃO DE EMAIL ---
+        // --- 2. NOVO ELEMENTO: ÁREA DE CADASTRO/TOGGLE ---
+        const toggleArea = document.createElement("div");
+        toggleArea.className = "toggle-area";
+        
+        const textoNaoTemConta = document.createElement("p");
+        textoNaoTemConta.textContent = "Não tem uma conta?";
+        toggleArea.appendChild(textoNaoTemConta);
+        
+        const linkCadastro = document.createElement("button");
+        linkCadastro.textContent = "Cadastre-se";
+        linkCadastro.className = "toggle-button";
+        toggleArea.appendChild(linkCadastro);
+
+        box.appendChild(toggleArea); // Adiciona a nova área ao box
+
+        // --- 3. LÓGICA EXISTENTE DE LOGIN E VALIDAÇÃO (INALTERADA) ---
         function emailValido(valor) {
             return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(valor);
         }
 
-        // --- FUNÇÃO DE LOGIN ---
         function fazerLogin() {
             const vEmail = email.value.trim();
             const vSenha = senha.value.trim();
@@ -83,7 +98,12 @@ function PaginaLogin() {
             mensagem.textContent = "Email ou senha incorretos!";
         }
 
-        // --- ENTER NO EMAIL ---
+        // --- 4. NOVO EVENT LISTENER: REDIRECIONAR PARA /cadastro ---
+        const irParaCadastro = () => {
+             navigate("/cadastro"); // Redireciona para a rota /cadastro
+        };
+
+        // --- 5. CONFIGURAÇÃO DE LISTENERS EXISTENTES E NOVOS ---
         email.addEventListener("keydown", (e) => {
             if (e.key === "Enter") {
                 if (!email.value.trim()) {
@@ -103,7 +123,6 @@ function PaginaLogin() {
             }
         });
 
-        // --- ENTER NA SENHA ---
         senha.addEventListener("keydown", (e) => {
             if (e.key === "Enter") {
                 if (!senha.value.trim()) {
@@ -117,12 +136,20 @@ function PaginaLogin() {
         });
 
         botao.addEventListener("click", fazerLogin);
+        linkCadastro.addEventListener("click", irParaCadastro); // NOVO LISTENER
 
+        // --- 6. FUNÇÃO DE LIMPEZA (CLEANUP) ---
         return () => {
+            // Remove o listener de login existente
             botao.removeEventListener("click", fazerLogin);
+            
+            // Remove o NOVO listener de cadastro
+            linkCadastro.removeEventListener("click", irParaCadastro); 
+            
+            // Limpa o DOM
             divRoot.innerHTML = "";
         };
-    }, []);
+    }, [navigate]); // navigate deve estar nas dependências do useEffect
 
     return <div id="login-root" className="page-login"></div>;
 }

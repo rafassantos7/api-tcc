@@ -4,7 +4,8 @@ import PaginaListaUsuarios from './pages/Lista';
 import PaginaBemVindo from './pages/Bemvindo';
 import PaginaTarefa from './pages/Tarefas';
 import PaginaLogin from './pages/login';
-import AddTask from './pages/AdicionaTarefas';
+import AddTask from './pages/AdicionaHabitos';
+
 
 import './App.css'; // Para estilos globais, se necessário
 import TaskForm from './pages/Tarefas/addtask';
@@ -21,6 +22,7 @@ function App() {
         <Route path="/usuarios" element={<PaginaListaUsuarios />} />
         <Route path="/editar-meta/:id" element={<TaskForm />} /> {/* O :id é a chave */}
         <Route path="/login" element={<PaginaLogin />} />
+        
 
       </Routes>
     </Router>
